@@ -7,9 +7,9 @@
 
     <link rel="shortcut icon" href="~/AdminTheme/assets/images/favicon_1.ico">
 
-    <title>@ViewData["Title"]|LampShade Shop</title>
-    <meta name="keywords"content="" />
-    <meta name="description"content="" />
+    <title>@ViewData["Title"]|Doris Shop</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
 
 
     <!-- Base Css Files -->
@@ -19,6 +19,7 @@
     <link href="~/AdminTheme/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="~/AdminTheme/assets/ionicon/css/ionicons.min.css" rel="stylesheet" />
     <link href="~/AdminTheme/assets/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="~/AdminTheme/assets/css/style.css" rel="stylesheet" />
 
     <!-- animate css -->
     <link href="~/AdminTheme/assets/css/animate.css" rel="stylesheet" />
@@ -31,7 +32,9 @@
 
     <!-- Custom Files -->
     <link href="~/AdminTheme/assets/css/helper.css" rel="stylesheet" type="text/css" />
-    <link href="~/AdminTheme/assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/AdminTheme/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="~/AdminTheme/assets/css/style.css" rel="stylesheet" />
     <script src="~/AdminTheme/assets/js/modernizr.min.js"></script>
 
 </head>
@@ -496,7 +499,7 @@
 
     <!-- Todo -->
     <script src="~/AdminTheme/assets/js/jquery.todo.js"></script>
-
+    
     <!-- <script type="text/javascript"> -->
     <!-- /* ============================================== -->
     <!-- Counter Up -->
@@ -508,6 +511,6 @@
     <!-- }); -->
     <!-- }); -->
     <!-- </script> -->
-
+    @RenderSection("Scripts",false)
 </body>
 </html>
