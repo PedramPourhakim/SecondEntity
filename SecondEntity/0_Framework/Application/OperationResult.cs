@@ -8,21 +8,21 @@ namespace _0_Framework.Application
 {
     public class OperationResult
     {
-        public bool IsSucceeded { get; set; }
+        public bool Movafagh { get; set; }
         public string Message { get; set; }
         public OperationResult()
         {
-            IsSucceeded = false;
+            Movafagh = false;
         }
         public OperationResult Succeeded(string Message="عملیات با موفقیت انجام شد")
         {
-            IsSucceeded = true;
+            Movafagh = true;
             this.Message = Message;
             return this;
         }
         public OperationResult Failed(string Message)
         {
-            IsSucceeded = false;
+            Movafagh = false;
             this.Message = Message;
             return this;
         }
