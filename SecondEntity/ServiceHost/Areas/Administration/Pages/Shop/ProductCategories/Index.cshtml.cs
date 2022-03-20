@@ -21,5 +21,9 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
         {
             ProductCategories= productCategoryApplication.Search(searchModel);
         }
+        public IActionResult OnGetCreate()
+        {
+            return Partial("./Create",new CreateProductCategory());
+        }
     }
 }

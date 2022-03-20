@@ -76,6 +76,8 @@
     <None Include="wwwroot\AdminTheme\assets\font-awesome\font-awesome\scss\_variables.scss" />
     <None Include="wwwroot\AdminTheme\assets\font-awesome\fonts\fontawesome-webfont.svg" />
     <None Include="wwwroot\AdminTheme\assets\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\fonts\IranianSans.svg" />
+    <None Include="wwwroot\AdminTheme\assets\font-awesome\fonts\IranianSans.woff2" />
     <None Include="wwwroot\AdminTheme\assets\font-awesome\less\animated.less" />
     <None Include="wwwroot\AdminTheme\assets\font-awesome\less\bordered-pulled.less" />
     <None Include="wwwroot\AdminTheme\assets\font-awesome\less\core.less" />
@@ -106,6 +108,8 @@
     <None Include="wwwroot\AdminTheme\assets\font-awesome\scss\_variables.scss" />
     <None Include="wwwroot\AdminTheme\assets\fonts\glyphicons-halflings-regular.svg" />
     <None Include="wwwroot\AdminTheme\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="wwwroot\AdminTheme\assets\fonts\IranianSans.svg" />
+    <None Include="wwwroot\AdminTheme\assets\fonts\IranianSans.woff2" />
     <None Include="wwwroot\AdminTheme\assets\fonts\Material-Design-Iconic-Font.svg" />
     <None Include="wwwroot\AdminTheme\assets\form-wizard\bootstrap-validator.min.js" />
     <None Include="wwwroot\AdminTheme\assets\form-wizard\jquery.steps.min.js" />
@@ -151,6 +155,9 @@
     <None Include="wwwroot\AdminTheme\assets\js\jquery.todo.js" />
     <None Include="wwwroot\AdminTheme\assets\js\modernizr.min.js" />
     <None Include="wwwroot\AdminTheme\assets\js\npm.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\persian-date.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\persian-datepicker.min.js" />
+    <None Include="wwwroot\AdminTheme\assets\js\site.js" />
     <None Include="wwwroot\AdminTheme\assets\js\skycons.min.js" />
     <None Include="wwwroot\AdminTheme\assets\js\waves.js" />
     <None Include="wwwroot\AdminTheme\assets\js\wow.min.js" />
