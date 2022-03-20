@@ -54,7 +54,7 @@ Date: Jun 2015
 
 @font-face {
     font-family: 'IranSans';
-    src: url('../../fonts/IranianSans.eot'), url('../../fonts/IranianSans.eot') format('embedded-opentype'), url('../../fonts/IranianSans.woff') format('woff'), url('../../fonts/IranianSans.ttf') format('truetype'), url('../../fonts/IranianSans.svg') format('svg');
+    src: url('~/AdminTheme/assets/fonts/IranianSans.eot'), url('~/AdminTheme/assets/fonts/IranianSans.eot') format('embedded-opentype'), url('~/AdminTheme/assets/fonts/IranianSans.woff') format('woff'), url('~/AdminTheme/assets/fonts/IranianSans.ttf') format('truetype'), url('~/AdminTheme/assets/fonts/IranianSans.svg') format('svg');
     font-weight: normal;
     font-style: normal;
 }
