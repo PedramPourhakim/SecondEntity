@@ -42,17 +42,19 @@ namespace ShopManagement.Infrastructure.EfCore.Repository
         public List<ProductViewModel> Search(ProductSearchModel searchModel)
         {
             var query = context.Products
-                .Include(x=>x.Category)
+                .Include(x => x.Category)
                 .Select(x => new ProductViewModel
-            { 
-                Id=x.Id,
-                CategoryId=x.CategoryId,
-                Name=x.Name,
-                Category=x.Category.Name,
-                Code=x.Code,
-                Picture=x.Picture,
-                UnitPrice=x.UnitPrice
-            });
+                {
+                    Id = x.Id,
+                    CategoryId = x.CategoryId,
+                    Name = x.Name,
+                    Category = x.Category.Name,
+                    Code = x.Code,
+                    Picture = x.Picture,
+                    UnitPrice = x.UnitPrice,
+                    CreationDate = x.CreationDate.ToString(),
+                    IsInStock=x.IsInStock
+                }) ;
             if (!string.IsNullOrWhiteSpace(searchModel.Name))
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
 
