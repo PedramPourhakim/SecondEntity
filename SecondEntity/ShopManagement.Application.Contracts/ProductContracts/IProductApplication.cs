@@ -15,6 +15,7 @@ namespace ShopManagement.Application.Contracts.ProductContracts
         OperationResult Edit(EditProduct command);
         EditProduct GetDetails(long id);
         List<ProductViewModel> SearchModel(ProductSearchModel searchModel);
+        List<ProductViewModel> GetProducts();
 
     }
 }
