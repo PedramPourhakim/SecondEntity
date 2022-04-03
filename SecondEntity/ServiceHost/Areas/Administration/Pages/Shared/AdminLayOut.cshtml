@@ -74,131 +74,114 @@
                 </div>
             </div>
         </div>
+    </div>
 
-                <!--- Divider -->
+    <!--- Divider -->
+    <!-- ========== Left Sidebar Start ========== -->
+    <partial name="_Menu" />
+    <!-- Left Sidebar End
+        
+    <!-- Start content -->
+    <div class="content-page">
+        <div class="content">
+            <div class="container">
+
+                @RenderBody()
+
+            </div> <!-- container -->
+
+        </div> <!-- content -->
+
+        <footer class="footer text-right">
+            Pedram Pourhakim
+        </footer>
+
+    </div>
+    </div>
+
+    <div id="MainModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content" id="ModalContent">
 
 
-        <div class="content-page">
-            <!-- ========== Left Sidebar Start ========== -->
-            <div class="left side-menu">
-                <div class="sidebar-inner slimscrollleft">
-                    <div class="user-details">
-                        <div class="pull-left">
-                            <img src="~/AdminTheme/assets/images/users/Me.jpg" alt="Me" class="thumb-md img-circle">
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    <div id="sidebar-menu">
-                        <ul>
-                            <li>
-                                <a asp-page="/Shop/ProductCategories/Index" class="waves-effect active"><i class="md md-home"></i><span>داشبورد</span></a></li>
-                               <li> <a asp-page="/Shop/Products/Index"></a>
-                            </li>
 
-                            </ul>
-                        
-            <!-- Left Sidebar End 
-            <!-- Start content -->
-            <div class="content">
-                <div class="container">
-
-                    @RenderBody()
-
-                </div> <!-- container -->
-
-            </div> <!-- content -->
-
-            <footer class="footer text-right">
-                Pedram Pourhakim
-            </footer>
-
+            </div>
         </div>
-            </div>
+    </div>
 
-            <div id="MainModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-                <div class="modal-dialog">
-                    <div class="modal-content" id="ModalContent">
-
-
-
-                    </div>
-                </div>
-            </div>
-
-            <script src="~/lib/jquery/dist/jquery.min.js"></script>
-            <script src="~/AdminTheme/assets/js/bootstrap.min.js"></script>
-            <script src="~/AdminTheme/assets/js/waves.js"></script>
-            <script src="~/AdminTheme/assets/js/wow.min.js"></script>
-            <script src="~/AdminTheme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
-            <script src="~/AdminTheme/assets/js/jquery.scrollTo.min.js"></script>
-            <script src="~/AdminTheme/assets/chat/moment-2.2.1.js"></script>
-            <script src="~/AdminTheme/assets/jquery-sparkline/jquery.sparkline.min.js"></script>
-            <script src="~/AdminTheme/assets/jquery-detectmobile/detect.js"></script>
-            <script src="~/AdminTheme/assets/fastclick/fastclick.js"></script>
-            <script src="~/AdminTheme/assets/jquery-slimscroll/jquery.slimscroll.js"></script>
-            <script src="~/AdminTheme/assets/jquery-blockui/jquery.blockUI.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/AdminTheme/assets/js/bootstrap.min.js"></script>
+    <script src="~/AdminTheme/assets/js/waves.js"></script>
+    <script src="~/AdminTheme/assets/js/wow.min.js"></script>
+    <script src="~/AdminTheme/assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+    <script src="~/AdminTheme/assets/js/jquery.scrollTo.min.js"></script>
+    <script src="~/AdminTheme/assets/chat/moment-2.2.1.js"></script>
+    <script src="~/AdminTheme/assets/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="~/AdminTheme/assets/jquery-detectmobile/detect.js"></script>
+    <script src="~/AdminTheme/assets/fastclick/fastclick.js"></script>
+    <script src="~/AdminTheme/assets/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <script src="~/AdminTheme/assets/jquery-blockui/jquery.blockUI.js"></script>
 
 
-            <!-- sweet alerts -->
-            <script src="~/AdminTheme/assets/sweet-alert/sweet-alert.min.js"></script>
-            <script src="~/AdminTheme/assets/sweet-alert/sweet-alert.init.js"></script>
+    <!-- sweet alerts -->
+    <script src="~/AdminTheme/assets/sweet-alert/sweet-alert.min.js"></script>
+    <script src="~/AdminTheme/assets/sweet-alert/sweet-alert.init.js"></script>
 
 
-            <!-- flot Chart -->
-            <script src="~/AdminTheme/assets/flot-chart/jquery.flot.js"></script>
-            <script src="~/AdminTheme/assets/flot-chart/jquery.flot.time.js"></script>
-            <script src="~/AdminTheme/assets/flot-chart/jquery.flot.tooltip.min.js"></script>
-            <script src="~/AdminTheme/assets/flot-chart/jquery.flot.resize.js"></script>
-            <script src="~/AdminTheme/assets/flot-chart/jquery.flot.pie.js"></script>
-            <script src="~/AdminTheme/assets/flot-chart/jquery.flot.selection.js"></script>
-            <script src="~/AdminTheme/assets/flot-chart/jquery.flot.stack.js"></script>
-            <script src="~/AdminTheme/assets/flot-chart/jquery.flot.crosshair.js"></script>
+    <!-- flot Chart -->
+    <script src="~/AdminTheme/assets/flot-chart/jquery.flot.js"></script>
+    <script src="~/AdminTheme/assets/flot-chart/jquery.flot.time.js"></script>
+    <script src="~/AdminTheme/assets/flot-chart/jquery.flot.tooltip.min.js"></script>
+    <script src="~/AdminTheme/assets/flot-chart/jquery.flot.resize.js"></script>
+    <script src="~/AdminTheme/assets/flot-chart/jquery.flot.pie.js"></script>
+    <script src="~/AdminTheme/assets/flot-chart/jquery.flot.selection.js"></script>
+    <script src="~/AdminTheme/assets/flot-chart/jquery.flot.stack.js"></script>
+    <script src="~/AdminTheme/assets/flot-chart/jquery.flot.crosshair.js"></script>
 
-            <!-- Counter-up -->
-            <script src="~/AdminTheme/assets/counterup/waypoints.min.js" type="text/javascript"></script>
-            <script src="~/AdminTheme/assets/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+    <!-- Counter-up -->
+    <script src="~/AdminTheme/assets/counterup/waypoints.min.js" type="text/javascript"></script>
+    <script src="~/AdminTheme/assets/counterup/jquery.counterup.min.js" type="text/javascript"></script>
 
 
-            <!-- CUSTOM JS -->
-            <script src="~/AdminTheme/assets/js/jquery.app.js"></script>
+    <!-- CUSTOM JS -->
+    <script src="~/AdminTheme/assets/js/jquery.app.js"></script>
 
-            <!-- Dashboard -->
-            <script src="~/AdminTheme/assets/js/jquery.dashboard.js"></script>
+    <!-- Dashboard -->
+    <script src="~/AdminTheme/assets/js/jquery.dashboard.js"></script>
 
-            <!-- Chat -->
-            <script src="~/AdminTheme/assets/js/jquery.chat.js"></script>
+    <!-- Chat -->
+    <script src="~/AdminTheme/assets/js/jquery.chat.js"></script>
 
-            <!-- Todo -->
-            <script src="~/AdminTheme/assets/js/jquery.todo.js"></script>
+    <!-- Todo -->
+    <script src="~/AdminTheme/assets/js/jquery.todo.js"></script>
 
-            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-            <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
 
 
 
-            <script src="~/AdminTheme/assets/js/persian-date.min.js"></script>
-            <script src="~/AdminTheme/assets/js/persian-datepicker.min.js"></script>
+    <script src="~/AdminTheme/assets/js/persian-date.min.js"></script>
+    <script src="~/AdminTheme/assets/js/persian-datepicker.min.js"></script>
 
-            @RenderSection("Scripts", false)
+    @RenderSection("Scripts", false)
 
-            <script>
-                $('.persianDateInput').persianDatepicker({
-                    format: 'YYYY/MM/DD',
-                    autoClose: true,
-                    initialValueType: "persian"
-                });
-            </script>
+    <script>
+        $('.persianDateInput').persianDatepicker({
+            format: 'YYYY/MM/DD',
+            autoClose: true,
+            initialValueType: "persian"
+        });
+    </script>
 
-            <script src="https://cdn.tiny.cloud/1/03bywyfc22f080o11wndvso5su892zkphj49li728tkw9f3f/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-            <script>
-                tinymce.init({
-                    selector: '#BodyContent',
-                    plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-                    toolbar_mode: 'floating',
-                });
-            </script>
-            <script src="~/AdminTheme/assets/js/site.js"></script>
+    <script src="https://cdn.tiny.cloud/1/03bywyfc22f080o11wndvso5su892zkphj49li728tkw9f3f/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#BodyContent',
+            plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            toolbar_mode: 'floating',
+        });
+    </script>
+    <script src="~/AdminTheme/assets/js/site.js"></script>
 </body>
 </html>
