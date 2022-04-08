@@ -1,3 +1,4 @@
+using DiscountManagement.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,7 @@ namespace ServiceHost
         {
             var connectionstring = Configuration.GetConnectionString("SecondEntityDb");
             ShopManagementBootstrapper.Configure(services, connectionstring);
+            DiscountManagementBootstrapper.Configure(services, connectionstring);
             services.AddRazorPages();
         }
 
