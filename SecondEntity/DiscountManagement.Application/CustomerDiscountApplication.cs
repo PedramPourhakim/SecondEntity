@@ -18,7 +18,7 @@ namespace DiscountManagement.Application
             this.customerDiscountRepository = customerDiscountRepository;
         }
 
-        public OperationResult Define(DefineCostumerDiscount command)
+        public OperationResult Define(DefineCustomerDiscount command)
         {
             var operation = new OperationResult();
             if (customerDiscountRepository.Exists(x
@@ -38,7 +38,7 @@ namespace DiscountManagement.Application
             return operation.Succeeded();
         }
 
-        public OperationResult Edit(EditCostumerDiscount command)
+        public OperationResult Edit(EditCustomerDiscount command)
         {
             var operation = new OperationResult();
 
@@ -65,7 +65,7 @@ namespace DiscountManagement.Application
             return operation.Succeeded();
         }
 
-        public EditCostumerDiscount GetDetails(long id)
+        public EditCustomerDiscount GetDetails(long id)
         {
             return customerDiscountRepository.GetDetails(id);
         }

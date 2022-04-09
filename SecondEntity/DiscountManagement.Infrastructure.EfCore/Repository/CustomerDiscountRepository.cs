@@ -23,10 +23,10 @@ namespace DiscountManagement.Infrastructure.EfCore.Repository
             this.shopContext = shopContext;
         }
 
-        public EditCostumerDiscount GetDetails(long id)
+        public EditCustomerDiscount GetDetails(long id)
         {
             return context.CustomerDiscounts.Select(x => new
-            EditCostumerDiscount
+            EditCustomerDiscount
             {
                 Id = x.Id,
                 ProductId = x.ProductId,
@@ -52,7 +52,7 @@ namespace DiscountManagement.Infrastructure.EfCore.Repository
                     StartDateGr=x.StartDate,
                     DiscountRate = x.DiscountRate,
                     Reason = x.Reason,
-
+                   CreationDate=x.CreationDate.ToFarsi()
                 });
             if (searchModel.ProductId > 0)
                 query = query.Where(x =>
