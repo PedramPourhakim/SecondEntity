@@ -1,5 +1,7 @@
 ﻿using DiscountManagement.Application;
+using DiscountManagement.Application.Contracts.ColleagueDiscount;
 using DiscountManagement.Application.Contracts.CustomerDiscount;
+using DiscountManagement.Domain.ColleagueDiscountAgg;
 using DiscountManagement.Domain.CustomerDiscountAgg;
 using DiscountManagement.Infrastructure.EfCore;
 using DiscountManagement.Infrastructure.EfCore.Repository;
@@ -18,6 +20,12 @@ namespace DiscountManagement.Configuration
 
             services.AddScoped<ICustomerDiscountRepository, CustomerDiscountRepository>();
             services.AddTransient<ICustomerDiscountRepository, CustomerDiscountRepository>();
+
+            services.AddScoped<IColleagueDiscountApplication, ColleagueDiscountApplication>();
+            services.AddTransient<IColleagueDiscountApplication, ColleagueDiscountApplication>();
+
+            services.AddScoped<IColleagueDiscountRepository, ColleagueDiscountRepository>();
+            services.AddTransient<IColleagueDiscountRepository, ColleagueDiscountRepository>();
 
             services.AddDbContext<DiscountContext>(x => x.UseSqlServer(connectionstring));
 
