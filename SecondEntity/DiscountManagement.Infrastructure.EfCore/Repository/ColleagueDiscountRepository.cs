@@ -32,7 +32,7 @@ namespace DiscountManagement.Infrastructure.EfCore.Repository
             }).FirstOrDefault(x=>x.Id==id);
         }
 
-        public List<ColleagueDiscountViewModel> Search(ColleagueDiscountSearchModel searchModel)
+        public List<ColleagueDiscountViewModel> Search(InventoryDearchModel searchModel)
         {
             var products = shopContext.Products
                 .Select(x => new

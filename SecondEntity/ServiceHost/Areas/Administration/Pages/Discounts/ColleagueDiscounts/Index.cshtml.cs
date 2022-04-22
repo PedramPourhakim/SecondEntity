@@ -16,7 +16,7 @@ namespace ServiceHost.Areas.Administration.Pages.Discounts.ColleagueDiscounts
         [TempData]
         public string Message { get; set; }
         public List<ColleagueDiscountViewModel> ColleagueDiscounts;
-        public ColleagueDiscountSearchModel SearchModel;
+        public InventoryDearchModel SearchModel;
         public SelectList Products;
         private readonly IProductApplication productApplication;
         private readonly IColleagueDiscountApplication ColleagueDiscountApplication;
@@ -25,7 +25,7 @@ namespace ServiceHost.Areas.Administration.Pages.Discounts.ColleagueDiscounts
             this.ColleagueDiscountApplication = ColleagueDiscountApplication;
             this.productApplication = productApplication;
         }
-        public void OnGet(ColleagueDiscountSearchModel searchModel)
+        public void OnGet(InventoryDearchModel searchModel)
         {
             Products = new SelectList(productApplication.GetProducts(), "Id", "Name");//مقدار اسم را از لیست بگیر ونمایش بده و مقدار آیدی هم داخل آیدی قرارا بده
             ColleagueDiscounts = ColleagueDiscountApplication.Search(searchModel);

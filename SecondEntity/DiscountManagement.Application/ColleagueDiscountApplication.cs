@@ -90,7 +90,7 @@ namespace DiscountManagement.Application
             return operation.Succeeded();
         }
 
-        public List<ColleagueDiscountViewModel> Search(ColleagueDiscountSearchModel searchModel)
+        public List<ColleagueDiscountViewModel> Search(InventoryDearchModel searchModel)
         {
             return ColleagueDiscountRepository.Search(searchModel);
         }

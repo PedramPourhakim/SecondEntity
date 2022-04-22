@@ -1,4 +1,5 @@
-﻿using _0_Framework.Infrastructure;
+﻿using _0_Framework.Application;
+using _0_Framework.Infrastructure;
 using InventoryManagement.Application.Contracts.Inventory;
 using InventoryManagement.Domain.InventoryAgg;
 using ShopManagement.Infrastructure.EfCore;
@@ -23,7 +24,8 @@ namespace InventoryManagement.Infrastructure.EfCore.Repository
         public Inventory GetBy(long productId)
         {
             return context.Inventory
-                .FirstOrDefault(x => x.ProductId == productId);
+                .FirstOrDefault(x => x.ProductId
+                == productId);
         }
 
         public EditInventory GetDetails(long id)
@@ -35,6 +37,25 @@ namespace InventoryManagement.Infrastructure.EfCore.Repository
                 ProductId = x.ProductId,
                 UnitPrice = x.UnitPrice
             }).FirstOrDefault(x => x.Id == id);
+        }
+
+        public List<InventoryOperationViewModel> GetOperationLog(long InventoryId)
+        {
+            var inventory = context.Inventory.FirstOrDefault
+                 (x => x.Id == InventoryId);
+            return inventory.Operations.Select(x =>
+            new InventoryOperationViewModel
+            {
+                Id=x.Id,
+                Count=x.Count,
+                CurrentCount=x.CurrentCount,
+                Description=x.Description,
+                Operation=x.Operation,
+                OperationDate=x.OperationDate.ToFarsi(),
+                Operator="مدیر سیستم",
+                OperatorId=x.OperatorId,
+                OrderId=x.OrderId,
+            }).OrderByDescending(x=>x.Id).ToList();
         }
 
         public List<InventoryViewModel> Search
@@ -53,12 +74,13 @@ namespace InventoryManagement.Infrastructure.EfCore.Repository
                     UnitPrice = x.UnitPrice,
                     InStock = x.InStock,
                     ProductId = x.ProductId,
-                    CurrentCount = x.CalculateCurrentCount()
+                    CurrentCount = x.CalculateCurrentCount(),
+                    CreationDate=x.CreationDate.ToFarsi()
                 });
             if (searchModel.ProductId > 0)
                 query = query.Where(x => x.ProductId
                   == searchModel.ProductId);
-            if (searchModel.InStock == false)
+            if (searchModel.InStock == true)
                 query = query.Where(x => x.InStock
                 == false);
             var inventory = query.
