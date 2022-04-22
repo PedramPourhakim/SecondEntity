@@ -49,7 +49,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InventoryManagement", "Inve
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Domain", "IM.Domain", "{67FE3FD7-E41E-4E5B-9DFD-2053BAC3460C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Domain", "InventoryManagement.Domain\InventoryManagement.Domain.csproj", "{4837915C-0306-4FF5-A4ED-4EC11AC320C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InventoryManagement.Domain", "InventoryManagement.Domain\InventoryManagement.Domain.csproj", "{4837915C-0306-4FF5-A4ED-4EC11AC320C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IM.Application", "IM.Application", "{2BB29A80-9BFF-4433-9772-49F37620860A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InventoryManagement.Application.Contracts", "InventoryManagement.Application.Contracts\InventoryManagement.Application.Contracts.csproj", "{474F0A5B-C20F-442E-BC38-FB1B0694A072}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,6 +117,10 @@ Global
 		{4837915C-0306-4FF5-A4ED-4EC11AC320C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4837915C-0306-4FF5-A4ED-4EC11AC320C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4837915C-0306-4FF5-A4ED-4EC11AC320C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{474F0A5B-C20F-442E-BC38-FB1B0694A072}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{474F0A5B-C20F-442E-BC38-FB1B0694A072}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{474F0A5B-C20F-442E-BC38-FB1B0694A072}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{474F0A5B-C20F-442E-BC38-FB1B0694A072}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,6 +144,8 @@ Global
 		{EBAF98DE-C8FC-48F7-85D6-A4AE89A6D695} = {1BB9BBF1-57E6-4015-9CA1-1BD7DFD33B62}
 		{67FE3FD7-E41E-4E5B-9DFD-2053BAC3460C} = {2C87C2A2-999C-46A4-B874-E9EB96DA1586}
 		{4837915C-0306-4FF5-A4ED-4EC11AC320C9} = {67FE3FD7-E41E-4E5B-9DFD-2053BAC3460C}
+		{2BB29A80-9BFF-4433-9772-49F37620860A} = {2C87C2A2-999C-46A4-B874-E9EB96DA1586}
+		{474F0A5B-C20F-442E-BC38-FB1B0694A072} = {2BB29A80-9BFF-4433-9772-49F37620860A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47F8DAA5-7D28-4606-97A3-A6749EA34943}
