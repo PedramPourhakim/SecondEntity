@@ -16,7 +16,13 @@ namespace InventoryManagement.Domain.InventoryAgg
             ProductId = productId;
             UnitPrice = unitPrice;
             InStock = false;
+        } 
+        public void Edit(long productId, double unitPrice)
+        {
+            ProductId = productId;
+            UnitPrice = unitPrice;
         }
+        
         public long CalculateCurrentCount()
         {
             var plus = Operations.Where(x => x.Operation
