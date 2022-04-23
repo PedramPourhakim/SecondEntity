@@ -25,7 +25,7 @@ namespace ShopManagement.Application
                 return Operation.Failed(ApplicationMessages.DuplicatedRecord);
             var slug = command.Slug.Slugify();
             var product = new Product(command.Name, command.Code, 
-                command.UnitPrice, command.ShortDescription,
+                 command.ShortDescription,
                 command.Description,command.Picture,
                 command.PictureAlt, command.PictureTitle,
                 command.CategoryId,slug,
@@ -46,7 +46,7 @@ namespace ShopManagement.Application
                 return Operation.Failed(" .یک رکورد دیگر با همین اسم ولی با یک آیدی دیگر وجود دارد لطفا از درج رکورد تکراری خودداری فرمایید");
             var slug = command.Slug.Slugify();
             product.Edit(command.Name, command.Code,
-                command.UnitPrice, command.ShortDescription,
+                command.ShortDescription,
                 command.Description, command.Picture,
                 command.PictureAlt, command.PictureTitle,
                 command.CategoryId, slug,
@@ -66,29 +66,6 @@ namespace ShopManagement.Application
         {
             return productRepository.GetProducts();
         }
-
-        public OperationResult InStock(long id)
-        {
-            var Operation = new OperationResult();
-            var product = productRepository.Get(id);
-            if (product == null)
-                return Operation.Failed(ApplicationMessages.RecordNotFound);
-            product.InStock();
-            productRepository.SaveChanges();
-            return Operation.Succeeded();
-        }
-
-        public OperationResult NotInStock(long id)
-        {
-            var operation = new OperationResult();
-            var product = productRepository.Get(id);
-            if (product == null)
-                return operation.Failed(ApplicationMessages.RecordNotFound);
-            product.NotInStock();
-            productRepository.SaveChanges();
-            return operation.Succeeded();
-        }
-
         public List<ProductViewModel> SearchModel(ProductSearchModel searchModel)
         {
            return productRepository.Search(searchModel);
