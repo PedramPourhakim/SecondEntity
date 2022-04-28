@@ -21,5 +21,6 @@ namespace _01_Query.Contract.Product
         public bool HasDiscount { get; set; }
         public string DiscountExpireDate { get; set; }
         public string CategorySlug { get; set; }
+        public string ShortDescription { get; set; }
     }
 }
