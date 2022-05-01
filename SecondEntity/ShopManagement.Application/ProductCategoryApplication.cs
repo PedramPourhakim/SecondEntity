@@ -12,9 +12,10 @@ namespace ShopManagement.Application
     public class ProductCategoryApplication : IProductCategoryApplication
     {
         private readonly IProductCategoryRepository productCategoryRepository;
-
-        public ProductCategoryApplication(IProductCategoryRepository productCategoryRepository)
+        private readonly IFileUploader fileUploader;
+        public ProductCategoryApplication(IProductCategoryRepository productCategoryRepository,IFileUploader fileUploader)
         {
+            this.fileUploader = fileUploader;
             this.productCategoryRepository = productCategoryRepository;
         }
 
@@ -25,7 +26,7 @@ namespace ShopManagement.Application
                 return Operation.Failed(ApplicationMessages.DuplicatedRecord);
             var slug = command.Slug.Slugify();
             var productcategory = new ProductCategory(command.Name,
-                command.Description, command.Picture
+                command.Description, ""
                 , command.PictureAlt, command.PictureTitle,
                 command.Keywords, command.MetaDescription,
                 slug);
@@ -44,8 +45,10 @@ namespace ShopManagement.Application
             if (productCategoryRepository.Exists(x => x.Name == command.Name && x.Id != command.Id))
                 return operation.Failed("یک رکورد دیگر با همین اسم ولی با آیدی دیگر وجود دارد پس لطفا مجدد تلاش کنید");
             var slug = command.Slug.Slugify();
+            var PicturePath = $"{command.Slug}";
+            var FileName = fileUploader.Upload(command.Picture,PicturePath);
             productcategory.Edit(command.Name,command.Description,
-                command.Picture,command.PictureAlt,
+                FileName,command.PictureAlt,
                 command.PictureTitle,command.Keywords,
                 command.MetaDescription,slug);
             productCategoryRepository.SaveChanges();

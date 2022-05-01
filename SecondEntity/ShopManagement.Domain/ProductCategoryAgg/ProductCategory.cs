@@ -42,6 +42,7 @@ namespace ShopManagement.Domain.ProductCategoryAgg
         {
             this.Name = Name;
             this.Description = Description;
+            if(!string.IsNullOrWhiteSpace(Picture))
             this.Picture = Picture;
             this.PictureAlt = PictureAlt;
             this.PictureTitle = PictureTitle;

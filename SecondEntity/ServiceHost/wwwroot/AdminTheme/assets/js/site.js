@@ -85,10 +85,10 @@ function CallBackHandler(data, action, form) {
             alert(data.Message);
             break;
         case "Refresh":
-            if (data.movafagh==true) {
+            if (data.isSuccedded) {
                 window.location.reload();
-            } else if(data.movafagh==false) {
-                alert(data.Message);
+            } else {
+                alert(data.message);
             }
             break;
         case "RefereshList":
