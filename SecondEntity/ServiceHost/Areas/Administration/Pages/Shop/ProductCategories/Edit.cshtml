@@ -1,9 +1,10 @@
 ﻿@model ShopManagement.Application.Contracts.ProductCategoryContracts.EditProductCategory
 @{
 }
+
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title">ویرایش گروه محصول:@Model.Name</h4>
+    <h4 class="modal-title">ویرایش گروه محصول: @Model.Name</h4>
 </div>
 
 <form asp-page="./Index" asp-page-handler="Edit"
@@ -32,7 +33,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label asp-for="Picture" class="control-label">عکس</label>
-                    <input type="file" class="form-control" asp-for="Picture" accept="image/*">
+                    <input type="file" class="form-control" asp-for="Picture">
                     <span asp-validation-for="Picture" class="error"></span>
                 </div>
             </div>
@@ -82,8 +83,8 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
     </div>
-    <input type="hidden"asp-for="Id"value="@Model.Id" />
     <div class="modal-footer">
         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>
         <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش</button>

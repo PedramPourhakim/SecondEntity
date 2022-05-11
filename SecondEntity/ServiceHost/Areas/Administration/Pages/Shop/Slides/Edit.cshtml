@@ -1,9 +1,8 @@
 ﻿@model ShopManagement.Application.Contracts.SlideContracts.EditSlide
-@{
-}
+
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title"> ویرایش اسلاید:@Model.Heading</h4>
+    <h4 class="modal-title">ویرایش اسلاید: @Model.Heading</h4>
 </div>
 
 <form asp-page="./Index" asp-page-handler="Edit"
@@ -13,12 +12,11 @@
       data-action="Refresh"
       enctype="multipart/form-data">
     <div class="modal-body">
-
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
                     <label asp-for="Picture" class="control-label">عکس</label>
-                    <input type="text" class="form-control" asp-for="Picture" accept="image/*">
+                    <input type="file" class="form-control" asp-for="Picture" accept="image/*">
                     <span asp-validation-for="Picture" class="error"></span>
                 </div>
             </div>
@@ -54,6 +52,8 @@
                     <span asp-validation-for="Title" class="error"></span>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="Text" class="control-label">متن</label>
@@ -61,27 +61,24 @@
                     <span asp-validation-for="Text" class="error"></span>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label asp-for="BtnText" class="control-label">متن دکمه</label>
-                        <input type="text" class="form-control" asp-for="BtnText">
-                        <span asp-validation-for="BtnText" class="error"></span>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label asp-for="Link" class="control-label">لینک</label>
-                                <input type="text" class="form-control" asp-for="Link">
-                                <span asp-validation-for="Link" class="error"></span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="BtnText" class="control-label">متن دکمه</label>
+                    <input type="text" class="form-control" asp-for="BtnText">
+                    <span asp-validation-for="BtnText" class="error"></span>
                 </div>
-                <input type="hidden"asp-for="Id"value="@Model.Id" />
             </div>
-
         </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Link" class="control-label">لینک</label>
+                    <input type="text" class="form-control" asp-for="Link">
+                    <span asp-validation-for="Link" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" asp-for="Id" value="@Model.Id" />
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">بستن</button>

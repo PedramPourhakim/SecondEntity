@@ -1,61 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DiscountManagement.Application.Contracts.ColleagueDiscount;
+using _0_Framework.Infrastructure;
 using InventoryManagement.Application.Contracts.Inventory;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ShopManagement.Application.Contracts.ProductCategoryContracts;
 using ShopManagement.Application.Contracts.ProductContracts;
+using System.Collections.Generic;
 
 namespace ServiceHost.Areas.Administration.Pages.Inventory
 {
     public class IndexModel : PageModel
     {
-        [TempData]
-        public string Message { get; set; }
-        public List<InventoryViewModel> Inventory;
+        [TempData] public string Message { get; set; }
         public InventorySearchModel SearchModel;
+        public List<InventoryViewModel> Inventory;
         public SelectList Products;
-        private readonly IProductApplication productApplication;
-        private readonly IInventoryApplication InventoryApplication;
-        public IndexModel(IProductApplication productApplication,
-            IInventoryApplication InventoryApplication)
+
+        private readonly IProductApplication _productApplication;
+        private readonly IInventoryApplication _inventoryApplication;
+
+        public IndexModel(IProductApplication productApplication, IInventoryApplication inventoryApplication)
         {
-            this.InventoryApplication = InventoryApplication;
-            this.productApplication = productApplication;
+            _productApplication = productApplication;
+            _inventoryApplication = inventoryApplication;
         }
+
         public void OnGet(InventorySearchModel searchModel)
         {
-            Products = new SelectList(productApplication.GetProducts(), "Id", "Name");//مقدار اسم را از لیست بگیر ونمایش بده و مقدار آیدی هم داخل آیدی قرارا بده
-            Inventory = InventoryApplication.Search(searchModel);
+            Products = new SelectList(_productApplication.GetProducts(), "Id", "Name");
+            Inventory = _inventoryApplication.Search(searchModel);
         }
+
         public IActionResult OnGetCreate()
         {
             var command = new CreateInventory
             {
-                Products = (productApplication.GetProducts())
+                Products = _productApplication.GetProducts()
             };
             return Partial("./Create", command);
         }
+
         public JsonResult OnPostCreate(CreateInventory command)
         {
-            var result = InventoryApplication.Create(command);
+            var result = _inventoryApplication.Create(command);
             return new JsonResult(result);
         }
+
         public IActionResult OnGetEdit(long id)
         {
-            var inventory = InventoryApplication
-                .GetDetails(id);
-            inventory.Products = productApplication
-                .GetProducts();
-            return Partial("./Edit", inventory);
+            var inventory = _inventoryApplication.GetDetails(id);
+            inventory.Products = _productApplication.GetProducts();
+            return Partial("Edit", inventory);
         }
+
         public JsonResult OnPostEdit(EditInventory command)
         {
-            var result = InventoryApplication.Edit(command);
+            var result = _inventoryApplication.Edit(command);
             return new JsonResult(result);
         }
 
@@ -65,29 +65,33 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
             {
                 InventoryId = id
             };
-            return Partial("./Increase", command);
+            return Partial("Increase", command);
         }
+
         public JsonResult OnPostIncrease(IncreaseInventory command)
         {
-            var result = InventoryApplication.Increase(command);
+            var result = _inventoryApplication.Increase(command);
             return new JsonResult(result);
         }
+
         public IActionResult OnGetReduce(long id)
         {
             var command = new ReduceInventory()
             {
                 InventoryId = id
             };
-            return Partial("./Reduce", command);
+            return Partial("Reduce", command);
         }
+
         public JsonResult OnPostReduce(ReduceInventory command)
         {
-            var result = InventoryApplication.Reduce(command);
+            var result = _inventoryApplication.Reduce(command);
             return new JsonResult(result);
         }
+
         public IActionResult OnGetLog(long id)
         {
-            var log = InventoryApplication.GetOperationLog(id);
+            var log = _inventoryApplication.GetOperationLog(id);
             return Partial("OperationLog", log);
         }
     }

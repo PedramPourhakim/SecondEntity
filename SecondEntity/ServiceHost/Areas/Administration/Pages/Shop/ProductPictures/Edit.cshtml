@@ -1,9 +1,9 @@
 ﻿@model ShopManagement.Application.Contracts.ProductPictureContracts.EditProductPicture
-@{
 }
+
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title"> ویرایش عکس محصول:@Model.PictureAlt</h4>
+    <h4 class="modal-title">ویرایش عکس محصول: @Model.PictureAlt</h4>
 </div>
 
 <form asp-page="./Index" asp-page-handler="Edit"
@@ -16,9 +16,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
-                    <label asp-for="ProductId" class="control-label"> محصول</label>
-                    <select class="form-control" asp-for="ProductId" asp-items='new SelectList(Model.Products,"Id","Name")'>
-                        <option value="0"> محصول را انتخاب کنید:</option>
+                    <label asp-for="ProductId" class="control-label">محصول</label>
+                    <select class="form-control" asp-for="ProductId"
+                            asp-items='new SelectList(Model.Products, "Id", "Name")'>
+                        <option value="0">محصول</option>
                     </select>
                     <span asp-validation-for="ProductId" class="error"></span>
                 </div>
@@ -28,7 +29,7 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label asp-for="Picture" class="control-label">عکس</label>
-                    <input type="text" class="form-control" asp-for="Picture" accept="image/*">
+                    <input type="file" class="form-control" asp-for="Picture" accept="image/*">
                     <span asp-validation-for="Picture" class="error"></span>
                 </div>
             </div>

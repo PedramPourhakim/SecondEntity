@@ -1,61 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using DiscountManagement.Application.Contracts.CustomerDiscount;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ShopManagement.Application.Contracts.ProductCategoryContracts;
 using ShopManagement.Application.Contracts.ProductContracts;
+using System.Collections.Generic;
 
 namespace ServiceHost.Areas.Administration.Pages.Discounts.CustomerDiscounts
 {
+    //[Authorize(Roles = Roles.Administator)]
     public class IndexModel : PageModel
     {
         [TempData]
         public string Message { get; set; }
-        public List<CustomerDiscountViewModel> CustomerDiscounts;
         public CustomerDiscountSearchModel SearchModel;
+        public List<CustomerDiscountViewModel> CustomerDiscounts;
         public SelectList Products;
-        private readonly IProductApplication productApplication;
-        private readonly ICustomerDiscountApplication customerDiscountApplication;
-        public IndexModel(IProductApplication productApplication, ICustomerDiscountApplication customerDiscountApplication)
+
+        private readonly IProductApplication _productApplication;
+        private readonly ICustomerDiscountApplication _customerDiscountApplication;
+
+        public IndexModel(IProductApplication ProductApplication, ICustomerDiscountApplication customerDiscountApplication)
         {
-            this.customerDiscountApplication = customerDiscountApplication;
-            this.productApplication = productApplication;
+            _productApplication = ProductApplication;
+            _customerDiscountApplication = customerDiscountApplication;
         }
+
         public void OnGet(CustomerDiscountSearchModel searchModel)
         {
-            Products = new SelectList(productApplication.GetProducts(), "Id", "Name");//مقدار اسم را از لیست بگیر ونمایش بده و مقدار آیدی هم داخل آیدی قرارا بده
-            CustomerDiscounts = customerDiscountApplication.Search(searchModel);
+            Products = new SelectList(_productApplication.GetProducts(), "Id", "Name");
+            CustomerDiscounts = _customerDiscountApplication.Search(searchModel);
         }
+
         public IActionResult OnGetCreate()
         {
             var command = new DefineCustomerDiscount
             {
-                Products = (productApplication.GetProducts())
+                Products = _productApplication.GetProducts()
             };
-            return Partial("./Create",command);
-    }
-    public JsonResult OnPostCreate(DefineCustomerDiscount command)
-    {
-        var result = customerDiscountApplication.Define(command);
-        return new JsonResult(result);
-    }
-    public IActionResult OnGetEdit(long id)
-    {
-        var CustomerDiscount = customerDiscountApplication
-            .GetDetails(id);
-        CustomerDiscount.Products = productApplication
-            .GetProducts();
-        return Partial("./Edit", CustomerDiscount);
-    }
-    public JsonResult OnPostEdit(EditCustomerDiscount command)
-    {
-        var result = customerDiscountApplication.Edit(command);
-        return new JsonResult(result);
-    }
+            return Partial("./Create", command);
+        }
 
-}
+        public JsonResult OnPostCreate(DefineCustomerDiscount command)
+        {
+            var result = _customerDiscountApplication.Define(command);
+            return new JsonResult(result);
+        }
+
+        public IActionResult OnGetEdit(long id)
+        {
+            var customerDiscount = _customerDiscountApplication.GetDetails(id);
+            customerDiscount.Products = _productApplication.GetProducts();
+            return Partial("Edit", customerDiscount);
+        }
+
+        public JsonResult OnPostEdit(EditCustomerDiscount command)
+        {
+            var result = _customerDiscountApplication.Edit(command);
+            return new JsonResult(result);
+        }
+    }
 }

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ShopManagement.Application.Contracts.ProductCategoryContracts;
 using ShopManagement.Application.Contracts.ProductContracts;
 using ShopManagement.Application.Contracts.ProductPictureContracts;
 using ShopManagement.Application.Contracts.SlideContracts;
+using System.Collections.Generic;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.Slides
 {
@@ -17,54 +13,59 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Slides
         [TempData]
         public string Message { get; set; }
         public List<SlideViewModel> Slides;
-        private readonly ISlideApplication slideApplication;
+
+        private readonly ISlideApplication _slideApplication;
 
         public IndexModel(ISlideApplication slideApplication)
         {
-            this.slideApplication = slideApplication;
+            _slideApplication = slideApplication;
         }
 
         public void OnGet()
         {
-            Slides = slideApplication.GetList();
+            Slides = _slideApplication.GetList();
         }
+
         public IActionResult OnGetCreate()
         {
             var command = new CreateSlide();
-            return Partial("./Create",command);
+            return Partial("./Create", command);
         }
+
         public JsonResult OnPostCreate(CreateSlide command)
         {
-            var result = slideApplication.Create(command);
+            var result = _slideApplication.Create(command);
             return new JsonResult(result);
         }
+
         public IActionResult OnGetEdit(long id)
         {
-            var slide = slideApplication.GetDetails(id);
-            return Partial("./Edit", slide);
+            var slide = _slideApplication.GetDetails(id);
+            return Partial("Edit", slide);
         }
+
         public JsonResult OnPostEdit(EditSlide command)
         {
-            var result = slideApplication.Edit(command);
+            var result = _slideApplication.Edit(command);
             return new JsonResult(result);
         }
+
         public IActionResult OnGetRemove(long id)
         {
-            var result=slideApplication.Remove(id);
-            if (result.Movafagh==true)
-            {
+            var result = _slideApplication.Remove(id);
+            if (result.Movafagh)
                 return RedirectToPage("./Index");
-            }
+
             Message = result.Message;
             return RedirectToPage("./Index");
         }
+
         public IActionResult OnGetRestore(long id)
-        {            
-            var result = slideApplication.Restore(id);
-            if (result.Movafagh == true)
-            {
+        {
+            var result = _slideApplication.Restore(id);
+            if (result.Movafagh)
                 return RedirectToPage("./Index");
-            }
+
             Message = result.Message;
             return RedirectToPage("./Index");
         }

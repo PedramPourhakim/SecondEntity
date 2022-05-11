@@ -1,4 +1,5 @@
 ﻿using _0_Framework.Application;
+using DiscountManagement.Application.Contract.ColleagueDiscount;
 using DiscountManagement.Application.Contracts.ColleagueDiscount;
 using DiscountManagement.Domain.ColleagueDiscountAgg;
 using System;
@@ -90,7 +91,9 @@ namespace DiscountManagement.Application
             return operation.Succeeded();
         }
 
-        public List<ColleagueDiscountViewModel> Search(InventoryDearchModel searchModel)
+        
+
+        public List<ColleagueDiscountViewModel> Search(ColleagueDiscountSearchModel searchModel)
         {
             return ColleagueDiscountRepository.Search(searchModel);
         }

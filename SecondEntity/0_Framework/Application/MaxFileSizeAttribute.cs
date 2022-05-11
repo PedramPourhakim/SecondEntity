@@ -11,24 +11,24 @@ namespace _0_Framework.Application
 {
     public class maxFileSizeAttribute :ValidationAttribute , IClientModelValidator
     {
-        private readonly int MaxFileSize;
-        public maxFileSizeAttribute(int MaxFileSize)
+        private readonly int _maxFileSize;
+
+        public maxFileSizeAttribute(int maxFileSize)
         {
-            this.MaxFileSize = MaxFileSize;
+            _maxFileSize = maxFileSize;
         }
 
         public override bool IsValid(object value)
         {
             var file = value as IFormFile;
             if (file == null) return true;
-            if (file.Length > MaxFileSize)
-                return false;
-            return true;
+            return file.Length <= _maxFileSize;
         }
+
         public void AddValidation(ClientModelValidationContext context)
         {
             context.Attributes.Add("data-val", "true");
-            context.Attributes.Add("data-val",ErrorMessage);
+            context.Attributes.Add("data-val-maxFileSize", ErrorMessage);
         }
     }
 }

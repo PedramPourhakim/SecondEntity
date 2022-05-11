@@ -5,6 +5,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="Areas\Administration\Pages\Discounts\ColleagueDiscounts\Create.cshtml" />
+    <None Include="Areas\Administration\Pages\Discounts\ColleagueDiscounts\Edit.cshtml" />
+    <None Include="Areas\Administration\Pages\Discounts\ColleagueDiscounts\Index.cshtml" />
+    <None Include="Areas\Administration\Pages\Discounts\CustomerDiscounts\Create.cshtml" />
+    <None Include="Areas\Administration\Pages\Discounts\CustomerDiscounts\Edit.cshtml" />
+    <None Include="Areas\Administration\Pages\Discounts\CustomerDiscounts\Index.cshtml" />
+    <None Include="Areas\Administration\Pages\Index.cshtml" />
+    <None Include="Areas\Administration\Pages\Inventory\Create.cshtml" />
+    <None Include="Areas\Administration\Pages\Inventory\Edit.cshtml" />
+    <None Include="Areas\Administration\Pages\Inventory\Increase.cshtml" />
+    <None Include="Areas\Administration\Pages\Inventory\Index.cshtml" />
+    <None Include="Areas\Administration\Pages\Inventory\OperationLog.cshtml" />
+    <None Include="Areas\Administration\Pages\Inventory\Reduce.cshtml" />
+    <None Include="Areas\Administration\Pages\Shared\AdminLayOut.cshtml" />
+    <None Include="Areas\Administration\Pages\Shared\_Menu.cshtml" />
+    <None Include="Areas\Administration\Pages\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="Areas\Administration\Pages\_ViewImports.cshtml" />
+    <None Include="Areas\Administration\Pages\_ViewStart.cshtml" />
     <None Include="wwwroot\AdminTheme\assets\bootstrap-inputmask\bootstrap-inputmask.min.js" />
     <None Include="wwwroot\AdminTheme\assets\bootstrap-wysihtml5\bootstrap-wysihtml5.js" />
     <None Include="wwwroot\AdminTheme\assets\bootstrap-wysihtml5\wysihtml5-0.3.0.js" />
@@ -192,6 +210,9 @@
     <None Include="wwwroot\AdminTheme\assets\timepicker\bootstrap-datepicker.js" />
     <None Include="wwwroot\AdminTheme\assets\timepicker\bootstrap-timepicker.min.js" />
     <None Include="wwwroot\AdminTheme\assets\toggles\toggles.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
     <None Include="wwwroot\Theme\assets\fonts\fontawesome-webfont3e6e.svg" />
     <None Include="wwwroot\Theme\assets\fonts\fontawesome-webfont3e6e.woff2" />
     <None Include="wwwroot\Theme\assets\fonts\ionicons28b5.svg" />
