@@ -55,7 +55,8 @@ namespace ShopManagement.Domain.ProductAgg
             this.Code = Code;
             this.ShortDescription = ShortDescription;
             this.Description = Description;
-            this.Picture = Picture;
+            if (!string.IsNullOrWhiteSpace(Picture))
+                this.Picture = Picture;
             this.PictureAlt = PictureAlt;
             this.PictureTitle = PictureTitle;
             this.CategoryId = CategoryId;

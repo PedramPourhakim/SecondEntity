@@ -31,7 +31,6 @@ namespace ShopManagement.Infrastructure.EfCore.Repository
                 Description=x.Description,
                 MetaDescription=x.MetaDescription,
                 Keywords=x.Keywords,
-                Picture=x.Picture,
                 PictureAlt=x.PictureAlt,
                 PictureTitle=x.PictureTitle,
                 ShortDescription=x.ShortDescription,
@@ -45,6 +44,11 @@ namespace ShopManagement.Infrastructure.EfCore.Repository
                 Id=x.Id,
                 Name=x.Name
             }).ToList();
+        }
+
+        public Product GetProductWithCategory(long id)
+        {
+            return context.Products.Include(x=>x.Category).FirstOrDefault(x=>x.Id==id);
         }
 
         public List<ProductViewModel> Search(ProductSearchModel searchModel)
