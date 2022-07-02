@@ -12,19 +12,17 @@ namespace _0_Framework.Application
 {
     public class FileExtensionValidation : ValidationAttribute, IClientModelValidator
     {
-        private readonly string[] _validExtensions;
+        private readonly string[] validExtensions;
         public FileExtensionValidation(string[] validExtensions)
         {
-            validExtensions = _validExtensions;
+            this.validExtensions = validExtensions;
         }
         public override bool IsValid(object value)
         {
             var file = value as IFormFile;
             if (file == null) return true;
-            var fileExtension = Path.GetExtension(file.FileName);
-            if (!_validExtensions.Contains(fileExtension))
-                return false;
-            return true;
+            var fileExtention = Path.GetExtension(file.FileName);
+            return validExtensions.Contains(fileExtention);
         }
         public void AddValidation(ClientModelValidationContext context)
         {

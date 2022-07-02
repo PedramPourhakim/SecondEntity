@@ -44,10 +44,10 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
 
         public JsonResult OnPostEdit(EditProductCategory command)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-            }
 
+            }
             var result = _productCategoryApplication.Edit(command);
             return new JsonResult(result);
         }

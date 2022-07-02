@@ -16,7 +16,7 @@ namespace ShopManagement.Application.Contracts.ProductCategoryContracts
         public string Description { get;  set; }
       
         [FileExtensionValidation(new string[] {".jpeg",".jpg",".png" },ErrorMessage =ValidationMessages.InvalidFileFormat)]
-        [maxFileSize(3*1024*1024,ErrorMessage =ValidationMessages.MaxFileSize)]
+        [MaxFileSize(3*1024*1024,ErrorMessage =ValidationMessages.MaxFileSize)]
         public IFormFile Picture { get;  set; }
         public string PictureAlt { get;  set; }
         public string PictureTitle { get;  set; }

@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace _0_Framework.Application
 {
-    public class maxFileSizeAttribute :ValidationAttribute , IClientModelValidator
+    public class MaxFileSizeAttribute :ValidationAttribute , IClientModelValidator
     {
         private readonly int _maxFileSize;
 
-        public maxFileSizeAttribute(int maxFileSize)
+        public MaxFileSizeAttribute(int maxFileSize)
         {
-            _maxFileSize = maxFileSize;
+            _maxFileSize = maxFileSize;  
         }
 
         public override bool IsValid(object value)
