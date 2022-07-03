@@ -25,8 +25,14 @@ namespace ShopManagement.Application
             if (productCategoryRepository.Exists(x=>x.Name==command.Name))
                 return Operation.Failed(ApplicationMessages.DuplicatedRecord);
             var slug = command.Slug.Slugify();
-            var productcategory = new ProductCategory(command.Name,
-                command.Description, ""
+
+            var PicturePath = $"{command.Slug}";
+            var pictureName = fileUploader.Upload
+                (command.Picture, PicturePath);
+
+            var productcategory = new ProductCategory
+                (command.Name,
+                command.Description, pictureName
                 , command.PictureAlt, command.PictureTitle,
                 command.Keywords, command.MetaDescription,
                 slug);
@@ -46,9 +52,9 @@ namespace ShopManagement.Application
                 return operation.Failed("یک رکورد دیگر با همین اسم ولی با آیدی دیگر وجود دارد پس لطفا مجدد تلاش کنید");
             var slug = command.Slug.Slugify();
             var PicturePath = $"{command.Slug}";
-            var FileName = fileUploader.Upload(command.Picture,PicturePath);
+            var pictureName = fileUploader.Upload(command.Picture,PicturePath);
             productcategory.Edit(command.Name,command.Description,
-                FileName,command.PictureAlt,
+                pictureName,command.PictureAlt,
                 command.PictureTitle,command.Keywords,
                 command.MetaDescription,slug);
             productCategoryRepository.SaveChanges();

@@ -24,6 +24,7 @@ namespace ShopManagement.Domain.SliderAgg
             string heading, string title, string text,
             string link,string btnText)
         {
+
             Picture = picture;
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
@@ -39,7 +40,9 @@ namespace ShopManagement.Domain.SliderAgg
            string heading, string title, string text,
            string link,string btnText)
         {
-            Picture = picture;
+            if(!string.IsNullOrWhiteSpace(picture))
+                Picture = picture;
+
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
             Heading = heading;
