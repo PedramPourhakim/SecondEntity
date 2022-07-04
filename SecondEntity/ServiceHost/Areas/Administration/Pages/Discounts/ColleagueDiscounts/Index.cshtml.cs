@@ -1,3 +1,4 @@
+
 using DiscountManagement.Application.Contract.ColleagueDiscount;
 using DiscountManagement.Application.Contracts.ColleagueDiscount;
 using Microsoft.AspNetCore.Mvc;

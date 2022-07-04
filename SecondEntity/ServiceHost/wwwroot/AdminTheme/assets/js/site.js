@@ -49,7 +49,7 @@ $(document).ready(function () {
             const method = form.attr("method").toLocaleLowerCase();
             const url = form.attr("action");
             var action = form.attr("data-action");
-           
+
             if (method === "get") {
                 const data = form.serializeArray();
                 $.get(url,
