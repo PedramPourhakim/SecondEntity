@@ -66,25 +66,20 @@
             {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} }
         ]'>
                                                 <div class="single-image">
-                                                    <img src="assets/img/products/big1-1.jpg" class="img-fluid"
-                                                         alt="">
+                                                    <img src="~/ProductPictures/@Model.Product.Picture" class="img-fluid"
+                                                         alt="@Model.Product.PictureAlt">
                                                 </div>
-                                                <div class="single-image">
-                                                    <img src="assets/img/products/big1-2.jpg" class="img-fluid"
-                                                         alt="">
-                                                </div>
-                                                <div class="single-image">
-                                                    <img src="assets/img/products/big1-3.jpg" class="img-fluid"
-                                                         alt="">
-                                                </div>
-                                                <div class="single-image">
-                                                    <img src="assets/img/products/big1-4.jpg" class="img-fluid"
-                                                         alt="">
-                                                </div>
-                                                <div class="single-image">
-                                                    <img src="assets/img/products/big1-5.jpg" class="img-fluid"
-                                                         alt="">
-                                                </div>
+                                                
+                                                @foreach (var picture in Model.Product.Pictures)
+                                                {
+                                                    <div class="single-image">
+                                                        <img src="~/ProductPictures/@picture.Picture" class="img-fluid"
+                                                             alt="@picture.PictureAlt" title="@picture.PictureTitle">
+                                                    </div>
+                                                }
+
+
+
                                             </div>
                                         </div>
 
@@ -111,20 +106,17 @@
         {"breakpoint":479, "settings": {"slidesToShow": 2, "arrows": false, "slidesToScroll": 1} }
     ]'>
                                             <div class="single-image">
-                                                <img src="assets/img/products/big1-1.jpg" class="img-fluid" alt="">
+                                                <img src="~/ProductPictures/@Model.Product.Picture" class="img-fluid"
+                                                     alt="@Model.Product.PictureAlt">
                                             </div>
-                                            <div class="single-image">
-                                                <img src="assets/img/products/big1-2.jpg" class="img-fluid" alt="">
-                                            </div>
-                                            <div class="single-image">
-                                                <img src="assets/img/products/big1-3.jpg" class="img-fluid" alt="">
-                                            </div>
-                                            <div class="single-image">
-                                                <img src="assets/img/products/big1-4.jpg" class="img-fluid" alt="">
-                                            </div>
-                                            <div class="single-image">
-                                                <img src="assets/img/products/big1-5.jpg" class="img-fluid" alt="">
-                                            </div>
+
+                                            @foreach (var picture in Model.Product.Pictures)
+                                            {
+                                                <div class="single-image">
+                                                    <img src="~/ProductPictures/@picture.Picture" class="img-fluid"
+                                                         alt="@picture.PictureAlt" title="@picture.PictureTitle">
+                                                </div>
+                                            }
                                         </div>
                                     </div>
 

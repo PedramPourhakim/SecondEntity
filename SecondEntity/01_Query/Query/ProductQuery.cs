@@ -3,6 +3,7 @@ using _01_Query.Contract.Product;
 using DiscountManagement.Infrastructure.EfCore;
 using InventoryManagement.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrastructure.EfCore;
 using System;
 using System.Collections.Generic;
@@ -35,31 +36,36 @@ namespace _01_Query.Query
                 .ToList();
 
             var discounts = _discountContext.CustomerDiscounts
-                .Where(x => x.StartDate < DateTime.Now && x.EndDate > DateTime.Now)
+                .Where(x => x.StartDate < DateTime.Now &&
+                x.EndDate > DateTime.Now)
                 .Select(x => new { x.DiscountRate, x.ProductId,
                     x.EndDate }).ToList();
 
-            var product = _context.Products.Include(x => x.Category)
+            var product = _context.Products
+                .Include(x => x.Category).
+                Include(x => x.ProductPictures)
                 .Select(product => new ProductQueryModel
                 {
-                    Id = product.Id, 
+                    Id = product.Id,
                     Category = product.Category.Name,
                     Name = product.Name,
                     Picture = product.Picture,
                     PictureAlt = product.PictureAlt,
                     PictureTitle = product.PictureTitle,
                     Slug = product.Slug,
-                    CategorySlug=product.Category.Slug,
-                    Code=product.Code,
-                    Description=product.Description,
-                    Keywords=product.Keywords,
-                    MetaDescription=product.MetaDescription,
-                    ShortDescription=product.ShortDescription,
+                    CategorySlug = product.Category.Slug,
+                    Code = product.Code,
+                    Description = product.Description,
+                    Keywords = product.Keywords,
+                    MetaDescription = product.MetaDescription,
+                    ShortDescription = product.ShortDescription,
+                    Pictures = MapProductPictures(product.ProductPictures)
                 }).FirstOrDefault(x => x.Slug == slug);
             if (product == null)
                 return new ProductQueryModel();
           
-                var productInventory = inventory.FirstOrDefault(x => x.ProductId == product.Id);
+                var productInventory = inventory.
+                FirstOrDefault(x => x.ProductId == product.Id);
                 if (productInventory != null)
                 {
                     product.IsInStock = productInventory.InStock;
@@ -78,6 +84,20 @@ namespace _01_Query.Query
             return product;
             
         }
+
+        public static List<ProductPictureQueryModel> MapProductPictures(List<ProductPicture> pictures)
+        {
+            return pictures.Select
+                (x => new ProductPictureQueryModel {
+                    IsRemoved=x.IsRemoved,
+                    Picture=x.Picture,
+                    PictureAlt=x.PictureAlt,
+                    PictureTitle=x.PictureTitle,
+                    ProductId=x.ProductId
+                })
+                .Where(x => !x.IsRemoved).ToList();
+        }
+
 
         //public ProductQueryModel GetProductDetails(string slug)
         //{
