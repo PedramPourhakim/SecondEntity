@@ -9,6 +9,7 @@ using ShopManagement.Application.Contracts.ProductCategoryContracts;
 using ShopManagement.Application.Contracts.ProductContracts;
 using ShopManagement.Application.Contracts.ProductPictureContracts;
 using ShopManagement.Application.Contracts.SlideContracts;
+using ShopManagement.Domain.CommentAgg;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Domain.ProductPictureAgg;
@@ -52,6 +53,11 @@ namespace ShopManagement.Configuration
 
             services.AddTransient<IProductQuery, ProductQuery>();
             services.AddScoped<IProductQuery, ProductQuery>();
+
+            services.AddTransient<ICommentRepository,CommentRepository>();
+            services.AddScoped<ICommentRepository,CommentRepository>();
+
+
 
             services.AddDbContext<ShopContext>(x=>x.UseSqlServer(connectionstring));
         }
