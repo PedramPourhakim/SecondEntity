@@ -5,6 +5,7 @@ using _01_Query.Query;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ShopManagement.Application;
+using ShopManagement.Application.Contracts.Comment;
 using ShopManagement.Application.Contracts.ProductCategoryContracts;
 using ShopManagement.Application.Contracts.ProductContracts;
 using ShopManagement.Application.Contracts.ProductPictureContracts;
@@ -57,7 +58,8 @@ namespace ShopManagement.Configuration
             services.AddTransient<ICommentRepository,CommentRepository>();
             services.AddScoped<ICommentRepository,CommentRepository>();
 
-
+            services.AddTransient<ICommentApplication, CommentApplication>();
+            services.AddScoped<ICommentApplication,CommentApplication>();
 
             services.AddDbContext<ShopContext>(x=>x.UseSqlServer(connectionstring));
         }
