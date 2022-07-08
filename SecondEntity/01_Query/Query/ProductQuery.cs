@@ -22,7 +22,7 @@ namespace _01_Query.Query
         //private readonly CommentContext _commentContext;
 
         public ProductQuery(ShopContext context, InventoryContext inventoryContext,
-            DiscountContext discountContext /*CommentContext commentContext*/)
+            DiscountContext discountContext) //CommentContext commentContext)
         {
             _context = context;
             _discountContext = discountContext;
