@@ -1,7 +1,8 @@
 ﻿@page
 @model CreateModel
 @{
-    Layout = "/Shared/_AdminLayOut";
+    Layout = "Shared/_AdminLayout";
+
     ViewData["Title"] = "ایجاد مقاله جدید";
 }
 
@@ -40,7 +41,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label  asp-for="command.CategoryId">گروه مقاله</label>
+                                <label asp-for="command.CategoryId">گروه مقاله</label>
                                 <select class="form-control" asp-for="command.CategoryId" asp-items="Model.ArticleCategories">
                                     <option value="0">گروه مقاله ...</option>
                                 </select>
@@ -112,7 +113,7 @@
                     </div>
                     <button type="submit" class="btn btn-success waves-effect waves-light m-b-5">ایجاد</button>
                     <a asp-page="./Index" class="btn btn-dark waves-effect waves-light m-b-5">بازگشت</a>
-                </form>             
+                </form>
             </div>
         </div>
     </div>
