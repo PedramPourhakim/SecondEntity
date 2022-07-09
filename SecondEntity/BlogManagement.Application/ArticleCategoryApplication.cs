@@ -1,11 +1,8 @@
 ﻿using _0_Framework.Application;
 using BlogManagement.Application.Contracts.ArticleCategory;
 using BlogManagement.Domain.ArticleCategoryAgg;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BlogManagement.Application
 {
@@ -71,6 +68,11 @@ namespace BlogManagement.Application
 
             articleCategoryRepository.SaveChanges();
             return Operation.Succeeded();
+        }
+
+        public List<ArticleCategoryViewModel> GetArticleCategories()
+        {
+            return articleCategoryRepository.GetArticleCategories();
         }
 
         public EditArticleCategory GetDetails(long id)
