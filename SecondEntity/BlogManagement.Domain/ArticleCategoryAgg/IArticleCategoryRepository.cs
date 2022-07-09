@@ -15,5 +15,7 @@ namespace BlogManagement.Domain.ArticleCategoryAgg
             (ArticleCategorySearchModel searchModel);
 
         EditArticleCategory GetDetails(long id);
+        string GetSlugBy(long id);
+
     }
 }

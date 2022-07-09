@@ -30,7 +30,8 @@ namespace BlogManagement.Application
             var PictureName=fileUploader.Upload(command.Picture, slug);
 
             var ArticleCategory = new ArticleCategory(command.Name,
-                PictureName,command.Description,
+                PictureName,command.PictureAlt
+                ,command.PictureTitle,command.Description,
                 command.ShowOrder,slug,
                 command.Keywords,command.MetaDescription,
                 command.CanonicalAddress);
@@ -61,7 +62,9 @@ namespace BlogManagement.Application
                 .Upload(command.Picture, slug);
 
             articleCategory.Edit(command.Name,
-                PictureName, command.Description,
+                PictureName,command.PictureAlt,
+                command.PictureTitle
+                ,command.Description,
                 command.ShowOrder, slug,
                 command.Keywords, command.MetaDescription,
                 command.CanonicalAddress);
@@ -74,6 +77,8 @@ namespace BlogManagement.Application
         {
             return articleCategoryRepository.GetDetails(id);
         }
+
+      
 
         public List<ArticleCategoryViewModel> Search(ArticleCategorySearchModel searchModel)
         {

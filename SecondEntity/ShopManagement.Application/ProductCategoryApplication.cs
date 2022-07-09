@@ -72,7 +72,7 @@ namespace ShopManagement.Application
             return productCategoryRepository.GetProductCategories();        
         }
 
-        public List<ProductCategoryViewModel> Search(ProductCategorySearchModel searchModel)
+        public List<ProductCategoryViewModel> Search(ArticleCategoriesSearchmodel searchModel)
         {
            return productCategoryRepository.Search(searchModel);
         }

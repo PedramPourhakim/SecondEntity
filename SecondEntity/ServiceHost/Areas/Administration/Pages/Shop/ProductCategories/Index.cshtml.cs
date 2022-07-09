@@ -10,7 +10,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
     //[Authorize(Roles = "1, 3")]
     public class IndexModel : PageModel
     {
-        public ProductCategorySearchModel SearchModel;
+        public ArticleCategoriesSearchmodel SearchModel;
         public List<ProductCategoryViewModel> ProductCategories;
 
         private readonly IProductCategoryApplication _productCategoryApplication;
@@ -20,7 +20,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
             _productCategoryApplication = productCategoryApplication;
         }
 
-        public void OnGet(ProductCategorySearchModel searchModel)
+        public void OnGet(ArticleCategoriesSearchmodel searchModel)
         {
             ProductCategories = _productCategoryApplication.Search(searchModel);
         }
