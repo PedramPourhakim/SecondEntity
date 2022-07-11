@@ -85,7 +85,7 @@ function CallBackHandler(data, action, form) {
             alert(data.Message);
             break;
         case "Refresh":
-            if (data.isSuccedded) {
+            if (data.movafagh) {
                 window.location.reload();
             } else {
                 alert(data.message);
