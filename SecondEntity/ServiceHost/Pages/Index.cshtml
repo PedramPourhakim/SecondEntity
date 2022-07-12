@@ -1,23 +1,27 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "اولین رزومه ی پدرام پورحکیم";
+    ViewData["Title"] = "Uni Project";
 }
 
 @await Component.InvokeAsync("Slide")
 
-@await Component.InvokeAsync("ProductCategory") 
-@await Component.InvokeAsync("ProductCategoriesWithProduct") 
+@await Component.InvokeAsync("ProductCategory")
+
+@await Component.InvokeAsync("ProductCategoriesWithProduct")
+
 @await Component.InvokeAsync("LatestArrivals")
+
+<!--====================  banner hover area ====================-->
 <div class="banner-hover-area section-space">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-               
+                <!--=======  banner hover wrapper  =======-->
                 <div class="banner-hover-wrapper">
                     <div class="row">
                         <div class="col-md-6">
-                            
+                            <!--=======  single hover banner  =======-->
                             <div class="single-hover-banner">
                                 <div class="single-hover-banner__image">
                                     <a href="shop-left-sidebar.html">
@@ -31,11 +35,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            <!--=======  End of single hover banner  =======-->
                         </div>
 
                         <div class="col-md-6">
-                           
+                            <!--=======  single hover banner  =======-->
                             <div class="single-hover-banner">
                                 <div class="single-hover-banner__image">
                                     <a href="shop-left-sidebar.html">
@@ -49,25 +53,26 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            <!--=======  End of single hover banner  =======-->
                         </div>
                     </div>
                 </div>
-               
+                <!--=======  End of banner hover wrapper  =======-->
             </div>
         </div>
     </div>
 </div>
-
+<!--====================  End of banner hover area  ====================-->
+<!--====================  feature logo area ====================-->
 <div class="feature-logo-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-             
+                <!--=======  feature logo wrapper  =======-->
                 <div class="feature-logo-wrapper section-space--inner-bottom">
                     <div class="row">
                         <div class="col-md-4">
-                          
+                            <!--=======  single feature logo  =======-->
                             <div class="single-feature-logo">
                                 <div class="single-feature-logo__image">
                                     <img src="~/Theme/assets/img/icons/free_shipping.png" class="img-fluid" alt="">
@@ -80,10 +85,10 @@
                                     </p>
                                 </div>
                             </div>
-                           
+                            <!--=======  End of single feature logo  =======-->
                         </div>
                         <div class="col-md-4">
-                           
+                            <!--=======  single feature logo  =======-->
                             <div class="single-feature-logo">
                                 <div class="single-feature-logo__image">
                                     <img src="~/Theme/assets/img/icons/money_back.png" class="img-fluid" alt="">
@@ -99,7 +104,7 @@
                             <!--=======  End of single feature logo  =======-->
                         </div>
                         <div class="col-md-4">
-                           
+                            <!--=======  single feature logo  =======-->
                             <div class="single-feature-logo">
                                 <div class="single-feature-logo__image">
                                     <img src="~/Theme/assets/img/icons/support247.png" class="img-fluid" alt="">
@@ -112,18 +117,18 @@
                                     </p>
                                 </div>
                             </div>
-                           
+                            <!--=======  End of single feature logo  =======-->
                         </div>
                     </div>
                 </div>
-              
+                <!--=======  End of feature logo wrapper  =======-->
             </div>
         </div>
     </div>
 </div>
 <!--====================  End of feature logo area  ====================-->
 
-
+@await Component.InvokeAsync("LatestArticles")
 
 <!--====================  newsletter area ====================-->
 <div class="newsletter-area section-space--inner">
@@ -145,13 +150,13 @@
                         </form>
 
                     </div>
-                     @*mailchimp-alerts Start*@ 
+                    <!-- mailchimp-alerts Start -->
                     <div class="mailchimp-alerts">
-                        <div class="mailchimp-submitting"></div> 
-                        <div class="mailchimp-success"></div> 
-                        <div class="mailchimp-error"></div>  
+                        <div class="mailchimp-submitting"></div><!-- mailchimp-submitting end -->
+                        <div class="mailchimp-success"></div><!-- mailchimp-success end -->
+                        <div class="mailchimp-error"></div><!-- mailchimp-error end -->
                     </div>
-                      
+                    <!-- mailchimp-alerts end -->
                 </div>
             </div>
         </div>

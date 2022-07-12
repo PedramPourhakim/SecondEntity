@@ -10,7 +10,7 @@ namespace _01_Query.Query
 {
     public class SlideQuery : ISlideQuery
     {
-        private readonly ShopContext context;
+         private readonly ShopContext context;
 
         public SlideQuery(ShopContext context)
         {
