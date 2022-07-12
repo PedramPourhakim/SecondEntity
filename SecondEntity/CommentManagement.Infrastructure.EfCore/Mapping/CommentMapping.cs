@@ -1,13 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CommentManagement.Domain.CommentAgg;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ShopManagement.Domain.CommentAgg;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopManagement.Infrastructure.EfCore.Mapping
+namespace CommentManagement.Infrastructure.EfCore.Mapping
 {
     public class CommentMapping : IEntityTypeConfiguration<Comment>
     {
@@ -18,9 +18,9 @@ namespace ShopManagement.Infrastructure.EfCore.Mapping
             builder.Property(x=>x.Name).HasMaxLength(500);
             builder.Property(x => x.Email).HasMaxLength(500);
             builder.Property(x => x.Message).HasMaxLength(1000);
-            builder.HasOne(x => x.Product)
-                .WithMany(x=>x.Comments)
-                .HasForeignKey(x=>x.ProductId);
+
+            builder.HasOne(x => x.Parent).WithMany(x => x.Children)
+                .HasForeignKey(x=>x.ParentID);
         }
     }
 }

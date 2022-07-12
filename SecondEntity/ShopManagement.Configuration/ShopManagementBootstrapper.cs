@@ -2,15 +2,17 @@
 using _01_Query.Contract.ProductCategory;
 using _01_Query.Contract.Slide;
 using _01_Query.Query;
+using CommentManagement.Application;
+using CommentManagement.Application.Contracts.Comment;
+using CommentManagement.Domain.CommentAgg;
+using CommentManagement.Infrastructure.EfCore.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ShopManagement.Application;
-using ShopManagement.Application.Contracts.Comment;
 using ShopManagement.Application.Contracts.ProductCategoryContracts;
 using ShopManagement.Application.Contracts.ProductContracts;
 using ShopManagement.Application.Contracts.ProductPictureContracts;
 using ShopManagement.Application.Contracts.SlideContracts;
-using ShopManagement.Domain.CommentAgg;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Domain.ProductPictureAgg;
@@ -55,11 +57,7 @@ namespace ShopManagement.Configuration
             services.AddTransient<IProductQuery, ProductQuery>();
             services.AddScoped<IProductQuery, ProductQuery>();
 
-            services.AddTransient<ICommentRepository,CommentRepository>();
-            services.AddScoped<ICommentRepository,CommentRepository>();
 
-            services.AddTransient<ICommentApplication, CommentApplication>();
-            services.AddScoped<ICommentApplication,CommentApplication>();
 
             services.AddDbContext<ShopContext>(x=>x.UseSqlServer(connectionstring));
         }

@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ShopManagement.Infrastructure.EfCore;
+using CommentManagement.Infrastructure.EfCore;
 
-namespace ShopManagement.Infrastructure.EfCore.Migrations
+namespace CommentManagement.Infrastructure.EfCore.Migrations
 {
-    [DbContext(typeof(ShopContext))]
+    [DbContext(typeof(CommentContext))]
     [Migration("20220708131708_Comment")]
     partial class Comment
     {

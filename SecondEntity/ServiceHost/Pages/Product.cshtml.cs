@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using _01_Query.Contract.Product;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using ShopManagement.Application.Contracts.Comment;
+using CommentManagement.Application.Contracts.Comment;
 
 namespace ServiceHost.Pages
 {

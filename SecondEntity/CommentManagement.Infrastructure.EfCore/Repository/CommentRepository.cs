@@ -1,37 +1,36 @@
 ﻿using _0_Framework.Application;
 using _0_Framework.Infrastructure;
+using CommentManagement.Application.Contracts.Comment;
+using CommentManagement.Domain.CommentAgg;
 using Microsoft.EntityFrameworkCore;
-using ShopManagement.Application.Contracts.Comment;
-using ShopManagement.Domain.CommentAgg;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopManagement.Infrastructure.EfCore.Repository
+namespace CommentManagement.Infrastructure.EfCore.Repository
 {
     public class CommentRepository : RepositoryBase<long, Comment>, ICommentRepository
     {
-        private readonly ShopContext shopContext;
-        public CommentRepository(ShopContext shopContext):base(shopContext)
+        private readonly CommentContext CommentContext;
+        public CommentRepository(CommentContext CommentContext) :base(CommentContext)
         {
-            this.shopContext = shopContext;
+            this.CommentContext = CommentContext;
         }
         public List<CommentViewModel> Search(CommentSearchModel searchModel)
         {
-            var query = shopContext.Comments.
-                Include(x=>x.Product)
-                .Select(x => new CommentViewModel
+            var query = CommentContext.Comments.
+                Select(x => new CommentViewModel
                 {
                     Id=x.Id,
-                    Email=x.Email,
-                    IsConfirmed=x.IsConfirmed,
+                    Name = x.Name,
+                    Email = x.Email,
+                    Website = x.Website,
+                    Message = x.Message,
+                    OwnerRecordID=x.OwnerRecordID,
+                    IsConfirmed = x.IsConfirmed,
                     IsCanceled=x.IsCanceled,
-                    Message=x.Message,
-                    Name=x.Name,
-                    ProductId=x.ProductId,
-                    ProductName=x.Product.Name,
                     CommentDate=x.CreationDate.ToFarsi()
                 });
             if (!string.IsNullOrWhiteSpace(searchModel.Name))

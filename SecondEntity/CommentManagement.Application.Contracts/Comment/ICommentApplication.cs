@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopManagement.Application.Contracts.Comment
+namespace CommentManagement.Application.Contracts.Comment
 {
     public interface ICommentApplication
     {

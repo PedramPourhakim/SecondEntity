@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ShopManagement.Infrastructure.EfCore.Migrations
+namespace CommentManagement.Infrastructure.EfCore.Migrations
 {
     public partial class Comment : Migration
     {
