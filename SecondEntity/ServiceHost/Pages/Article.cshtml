@@ -100,7 +100,7 @@
                                     </div>
 
                                     <div class="comment-section">
-                                        <h3 class="comment-counter">نظرات (@Model.Article.Comments.Count)</h3>
+                                        @*<h3 class="comment-counter">نظرات (@Model.Article.Comments.Count)</h3>
                                         <div class="comment-container">
                                             @foreach (var comment in Model.Article.Comments)
                                             {
@@ -110,8 +110,8 @@
                                                     </span>
                                                     <div class="image">
                                                         <img src="~/Theme/assets/img/blog/comment-icon.png" alt="" width="50" height="50">
-                                                    </div>
-                                                    <div class="content">
+                                                    </div>*@
+                                                    @*<div class="content">
                                                         <h3 class="user">
                                                             @comment.Name <span class="comment-time">
                                                                 @comment.CreationDate
@@ -123,7 +123,7 @@
                                                                 <span>در پاسخ به: </span><a href="#comment-@comment.ParentId">@comment.parentName</a>
                                                             </p>
                                                         }
-                                                        <p class="comment-text">@comment.Message</p>
+                                                        <p class="comment-text">@comment.Message</p>*@
                                                     </div>
                                                 </div>
                                             }
@@ -161,7 +161,7 @@
                                                                 <input type="text" name="website" placeholder="مثال: http://www.Google.com">
                                                             </div>
                                                         </div>
-                                                        <input type="hidden" name="ownerRecordId" value="@Model.Article.Id" />
+                                                        @*<input type="hidden" name="ownerRecordId" value="@Model.Article.Id" />*@
                                                         <input type="hidden" name="articleSlug" value="@Model.Article.Slug" />
                                                         <input type="hidden" name="parentId" id="commentParentId" value="" />
                                                         <div class="col-lg-12">

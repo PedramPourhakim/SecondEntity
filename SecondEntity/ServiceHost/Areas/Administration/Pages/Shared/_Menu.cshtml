@@ -25,46 +25,47 @@
         </div>
         <!--- Divider -->
         <div id="sidebar-menu">
-           <ul>
+            <ul>
                 @*<li>
-                    <a asp-page="/Index" class="waves-effect active"><i class="md md-home"></i><span> داشبورد </span></a>
-                </li>
-                <li>
-                    <a asp-page="/Comments/Index" class="waves-effect"><i class="md md-home"></i><span> کامنت ها </span></a>
-                </li>*@
+            <a asp-page="/Index" class="waves-effect active"><i class="md md-home"></i><span> داشبورد </span></a>
+        </li>
+        <li>
+            <a asp-page="/Comments/Index" class="waves-effect"><i class="md md-home"></i><span> کامنت ها </span></a>
+        </li>*@
                 @*@if (AuthHelper.CurrentAccountRole() == Roles.Administrator)
-                {*@
+        {*@
 
-                    <li>
-                        <a asp-page="/Inventory/Index" class="waves-effect"><i class="md md-home"></i><span> انبارداری </span></a>
-                    </li>
-                    @*<li>
-                        <a asp-page="/Shop/Orders/Index" class="waves-effect"><i class="md md-home"></i><span> سفارشات </span></a>
-                    </li>*@
-                    <li class="has_sub">
-                        <a class="waves-effect"><i class="md md-mail"></i><span> فروشگاه </span><span class="pull-right"><i class="md md-add"></i></span></a>
-                        <ul class="list-unstyled">
-                            <li><a asp-page="/Shop/Slides/Index">اسلایدر</a></li>
-                            <li><a asp-page="/Shop/ProductCategories/Index">گروه محصولات</a></li>
-                            <li><a asp-page="/Shop/Products/Index">محصولات</a></li>
-                            <li><a asp-page="/Shop/ProductPictures/Index">عکس محصولات</a></li>
-                            <li><a asp-page="/Shop/Comments/Index">کامنت ها</a></li>
-                        </ul>
-                    </li>
-                    <li class="has_sub">
-                        <a class="waves-effect"><i class="md md-mail"></i><span> سیستم تخفیفات </span><span class="pull-right"><i class="md md-add"></i></span></a>
-                        <ul class="list-unstyled">
-                            <li><a asp-page="/Discounts/CustomerDiscounts/Index">تخفیف مشتری</a></li>
-                            <li><a asp-page="/Discounts/ColleagueDiscounts/Index">تخفیف همکاری</a></li>
-                        </ul>
-                    </li>
-                    @*<li class="has_sub">
-                        <a class="waves-effect"><i class="md md-mail"></i><span> سیستم کاربران </span><span class="pull-right"><i class="md md-add"></i></span></a>
-                        <ul class="list-unstyled">
-                            <li><a asp-page="/Accounts/Account/Index">کاربران</a></li>
-                            <li><a asp-page="/Accounts/Role/Index">نقش ها</a></li>
-                        </ul>
-                    </li>*@
+                <li>
+                    <a asp-page="/Inventory/Index" class="waves-effect"><i class="md md-home"></i><span> انبارداری </span></a>
+                </li>
+                @*<li>
+            <a asp-page="/Shop/Orders/Index" class="waves-effect"><i class="md md-home"></i><span> سفارشات </span></a>
+        </li>*@
+                <li class="has_sub">
+                    <a class="waves-effect"><i class="md md-mail"></i><span> فروشگاه </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a asp-page="/Shop/Slides/Index">اسلایدر</a></li>
+                        <li><a asp-page="/Shop/ProductCategories/Index">گروه محصولات</a></li>
+                        <li><a asp-page="/Shop/Products/Index">محصولات</a></li>
+                        <li><a asp-page="/Shop/ProductPictures/Index">عکس محصولات</a></li>
+
+                    </ul>
+                </li>
+                <li><a asp-page="/Comments/Index">کامنت ها</a></li>
+                <li class="has_sub">
+                    <a class="waves-effect"><i class="md md-mail"></i><span> سیستم تخفیفات </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a asp-page="/Discounts/CustomerDiscounts/Index">تخفیف مشتری</a></li>
+                        <li><a asp-page="/Discounts/ColleagueDiscounts/Index">تخفیف همکاری</a></li>
+                    </ul>
+                </li>
+                @*<li class="has_sub">
+            <a class="waves-effect"><i class="md md-mail"></i><span> سیستم کاربران </span><span class="pull-right"><i class="md md-add"></i></span></a>
+            <ul class="list-unstyled">
+                <li><a asp-page="/Accounts/Account/Index">کاربران</a></li>
+                <li><a asp-page="/Accounts/Role/Index">نقش ها</a></li>
+            </ul>
+        </li>*@
                 }
                 <li class="has_sub">
                     <a class="waves-effect"><i class="md md-mail"></i><span> سیستم بلاگینگ </span><span class="pull-right"><i class="md md-add"></i></span></a>
@@ -75,8 +76,8 @@
                 </li>
 
                 @*<li>
-                    <a asp-page="/Account" asp-page-handler="Logout" class="waves-effect active"><i class="fa fa-sign-out"></i><span> خروج </span></a>
-                </li>*@
+            <a asp-page="/Account" asp-page-handler="Logout" class="waves-effect active"><i class="fa fa-sign-out"></i><span> خروج </span></a>
+        </li>*@
             </ul>
             <div class="clearfix"></div>
         </div>

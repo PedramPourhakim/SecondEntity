@@ -1,5 +1,6 @@
 ﻿using _0_Framework.Application;
 using _01_Query.Contract.Product;
+using CommentManagement.Infrastructure.EfCore;
 using DiscountManagement.Infrastructure.EfCore;
 using InventoryManagement.Infrastructure.EfCore;
 using Microsoft.EntityFrameworkCore;
@@ -18,28 +19,34 @@ namespace _01_Query.Query
         private readonly ShopContext _context;
         private readonly InventoryContext _inventoryContext;
         private readonly DiscountContext _discountContext;
-        //private readonly CommentContext _commentContext;
+        private readonly CommentContext commentContext;
 
         public ProductQuery(ShopContext context, InventoryContext inventoryContext,
-            DiscountContext discountContext) //CommentContext commentContext)
+            DiscountContext discountContext, CommentContext commentContext)
         {
             _context = context;
             _discountContext = discountContext;
             _inventoryContext = inventoryContext;
-            //_commentContext = commentContext;
+            this.commentContext = commentContext;
         }
 
-        public ProductQueryModel GetDetails(string slug)
+        public ProductQueryModel GetProductDetails(string slug)
         {
             var inventory = _inventoryContext.Inventory.Select
-                (x => new { x.ProductId, x.UnitPrice,x.InStock })
+                (x => new { x.ProductId, x.UnitPrice, x.InStock })
                 .ToList();
+
+
 
             var discounts = _discountContext.CustomerDiscounts
                 .Where(x => x.StartDate < DateTime.Now &&
                 x.EndDate > DateTime.Now)
-                .Select(x => new { x.DiscountRate, x.ProductId,
-                    x.EndDate }).ToList();
+                .Select(x => new
+                {
+                    x.DiscountRate,
+                    x.ProductId,
+                    x.EndDate
+                }).ToList();
 
             var product = _context.Products
                 .Include(x => x.Category).
@@ -63,49 +70,52 @@ namespace _01_Query.Query
                 }).FirstOrDefault(x => x.Slug == slug);
             if (product == null)
                 return new ProductQueryModel();
-          
-                var productInventory = inventory.
-                FirstOrDefault(x => x.ProductId == product.Id);
-                if (productInventory != null)
+
+            var productInventory = inventory.
+            FirstOrDefault(x => x.ProductId == product.Id);
+            if (productInventory != null)
+            {
+                product.IsInStock = productInventory.InStock;
+                var price = productInventory.UnitPrice;
+                product.Price = price.ToMoney();
+                var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
+                if (discount != null)
                 {
-                    product.IsInStock = productInventory.InStock;
-                    var price = productInventory.UnitPrice;
-                    product.Price = price.ToMoney();
-                    var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
-                    if (discount != null)
-                    {
-                        int discountRate = discount.DiscountRate;
-                        product.DiscountRate = discountRate;
-                        product.HasDiscount = discountRate > 0;
-                        var discountAmount = Math.Round((price * discountRate) / 100);
-                        product.PriceWithDiscount = (price - discountAmount).ToMoney();
-                    }
+                    int discountRate = discount.DiscountRate;
+                    product.DiscountRate = discountRate;
+                    product.HasDiscount = discountRate > 0;
+                    var discountAmount = Math.Round((price * discountRate) / 100);
+                    product.PriceWithDiscount = (price - discountAmount).ToMoney();
                 }
+            }
+            product.Comments =
+                commentContext.Comments.Where(x =>
+          x.Type == CommentType.Product).Where
+          (x => x.OwnerRecordID == product.Id)
+          .Where(x => !x.IsCanceled)
+          .Where(x => x.IsConfirmed)
+          .Select(x => new CommentQueryModel
+          {
+              Id = x.Id,
+              Message = x.Message,
+              Name = x.Name
+          }).OrderByDescending(x => x.Id).ToList();
+
             return product;
-            
         }
 
-        //public static List<CommentQueryModel> MapComments(List<Comment> comments)
-        //{
-        //    return comments.Where(x=>!x.IsCanceled)
-        //        .Where(x=>x.IsConfirmed)
-        //        .Select(x=>new CommentQueryModel
-        //    { 
-        //            Id=x.Id,
-        //            Message=x.Message,
-        //            Name=x.Name
-        //    }).OrderByDescending(x=>x.Id).ToList();
-        //}
+       
 
         public static List<ProductPictureQueryModel> MapProductPictures(List<ProductPicture> pictures)
         {
             return pictures.Select
-                (x => new ProductPictureQueryModel {
-                    IsRemoved=x.IsRemoved,
-                    Picture=x.Picture,
-                    PictureAlt=x.PictureAlt,
-                    PictureTitle=x.PictureTitle,
-                    ProductId=x.ProductId
+                (x => new ProductPictureQueryModel
+                {
+                    IsRemoved = x.IsRemoved,
+                    Picture = x.Picture,
+                    PictureAlt = x.PictureAlt,
+                    PictureTitle = x.PictureTitle,
+                    ProductId = x.ProductId
                 })
                 .Where(x => !x.IsRemoved).ToList();
         }

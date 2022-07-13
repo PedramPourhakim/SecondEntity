@@ -17,10 +17,8 @@ namespace CommentManagement.Infrastructure.EfCore.Mapping
             builder.HasKey(x=>x.Id);
             builder.Property(x=>x.Name).HasMaxLength(500);
             builder.Property(x => x.Email).HasMaxLength(500);
+            builder.Property(x => x.Website).HasMaxLength(500);
             builder.Property(x => x.Message).HasMaxLength(1000);
-
-            builder.HasOne(x => x.Parent).WithMany(x => x.Children)
-                .HasForeignKey(x=>x.ParentID);
         }
     }
 }

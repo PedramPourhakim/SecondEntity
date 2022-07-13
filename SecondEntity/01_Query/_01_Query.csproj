@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BlogManagement.Infrastructure.EfCore\BlogManagement.Infrastructure.EfCore.csproj" />
+    <ProjectReference Include="..\CommentManagement.Infrastructure.EfCore\CommentManagement.Infrastructure.EfCore.csproj" />
     <ProjectReference Include="..\DiscountManagement.Infrastructure.EfCore\DiscountManagement.Infrastructure.EfCore.csproj" />
     <ProjectReference Include="..\InventoryManagement.Infrastructure.EfCore\InventoryManagement.Infrastructure.EfCore.csproj" />
     <ProjectReference Include="..\ShopManagement.Infrastructure.EfCore\ShopManagement.Infrastructure.EfCore.csproj" />
