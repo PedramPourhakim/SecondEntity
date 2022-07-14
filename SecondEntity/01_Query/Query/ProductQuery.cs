@@ -1,4 +1,5 @@
 ﻿using _0_Framework.Application;
+using _01_Query.Contract.Comment;
 using _01_Query.Contract.Product;
 using CommentManagement.Infrastructure.EfCore;
 using DiscountManagement.Infrastructure.EfCore;
@@ -98,7 +99,8 @@ namespace _01_Query.Query
           {
               Id = x.Id,
               Message = x.Message,
-              Name = x.Name
+              Name = x.Name,
+              CreationDate = x.CreationDate.ToFarsi()
           }).OrderByDescending(x => x.Id).ToList();
 
             return product;
