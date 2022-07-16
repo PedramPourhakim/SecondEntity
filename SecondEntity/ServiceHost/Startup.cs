@@ -1,4 +1,6 @@
 using _0_Framework.Application;
+using _01_Query.Contract;
+using _01_Query.Query;
 using BlogManagement.Infrastructure.Configuration;
 using CommentManagement.Infrastructure.Bootstrapper;
 using DiscountManagement.Configuration;

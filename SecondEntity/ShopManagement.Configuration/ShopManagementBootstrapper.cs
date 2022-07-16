@@ -1,4 +1,5 @@
-﻿using _01_Query.Contract.Product;
+﻿using _01_Query.Contract;
+using _01_Query.Contract.Product;
 using _01_Query.Contract.ProductCategory;
 using _01_Query.Contract.Slide;
 using _01_Query.Query;
@@ -57,6 +58,8 @@ namespace ShopManagement.Configuration
             services.AddTransient<IProductQuery, ProductQuery>();
             services.AddScoped<IProductQuery, ProductQuery>();
 
+            services.AddTransient<ICartCalculatorService, CartCalculateService>();
+            services.AddScoped<ICartCalculatorService, CartCalculateService>();
 
 
             services.AddDbContext<ShopContext>(x=>x.UseSqlServer(connectionstring));

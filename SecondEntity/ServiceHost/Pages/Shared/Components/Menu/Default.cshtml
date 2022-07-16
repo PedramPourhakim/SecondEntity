@@ -1,5 +1,5 @@
 ﻿@model _01_Query.MenuModel
-@*@inject _0_Framework.Application.IAuthHelper AuthHelper*@
+@inject _0_Framework.Application.IAuthHelper AuthHelper
 
 <div class="header-area header-sticky">
     <div class="container">
@@ -42,7 +42,7 @@
                                 <li>
                                     <a href="contact.html">تماس با ما</a>
                                 </li>
-                                @*@if (AuthHelper.IsAuthenticated())
+                                @if (AuthHelper.IsAuthenticated())
                                 {
                                     <li>
                                         <a asp-page="/Account" asp-page-handler="Logout">خروج</a>
@@ -53,7 +53,7 @@
                                     <li>
                                         <a asp-page="/Account">وورد / ثبت نام</a>
                                     </li>
-                                }*@
+                                }
                             </ul>
                         </nav>
                     </div>

@@ -3,75 +3,67 @@
 @{
     ViewData["Title"] = Model.Product.Name;
     ViewData["keywords"] = Model.Product.Keywords;
-    ViewData["MetaDescription"] = Model.Product.MetaDescription;
+    ViewData["metaDescription"] = Model.Product.MetaDescription;
 }
+
 <div class="breadcrumb-area section-space--half">
     <div class="container wide">
         <div class="row">
             <div class="col-lg-12">
-                <!--=======  breadcrumb wrpapper  =======-->
                 <div class="breadcrumb-wrapper breadcrumb-bg">
-                    <!--=======  breadcrumb content  =======-->
                     <div class="breadcrumb-content">
-                        <h1> class="breadcrumb-content__title">@Model.Product.Name</h1>
+                        <h1 class="breadcrumb-content__title">@Model.Product.Name</h1>
                         <ul class="breadcrumb-content__page-map">
                             <li>
                                 <a asp-page="/Index">صفحه اصلی</a>
                             </li>
                             <li>
-                                <a asp-page="/ProductCategory" asp-route-id="@Model.Product.CategorySlug">گروه محصول</a>
+                                <a asp-page="/ProductCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a>
                             </li>
                             <li class="active">@Model.Product.Name</li>
                         </ul>
                     </div>
-                    <!--=======  End of breadcrumb content  =======-->
                 </div>
-                <!--=======  End of breadcrumb wrpapper  =======-->
             </div>
         </div>
     </div>
 </div>
-<!--====================  End of breadcrumb area  ====================-->
-<!--====================  page content area ====================-->
+
 <div class="page-content-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <!--=======  page wrapper  =======-->
                 <div class="page-wrapper">
                     <div class="page-content-wrapper">
-                        <!--=======  single product main content area  =======-->
                         <div class="single-product-main-content-area section-space" style="direction: ltr;">
                             <div class="row" style="display: flex; flex-direction: row-reverse">
                                 <div class="col-lg-6">
-                                    <!--=======  product details slider area  =======-->
-
                                     <div class="product-details-slider-area">
                                         <div class="big-image-wrapper">
                                             <div class="product-details-big-image-slider-wrapper product-details-big-image-slider-wrapper--bottom-space ht-slick-slider"
                                                  data-slick-setting='{
-            "slidesToShow": 1,
-            "slidesToScroll": 1,
-            "arrows": false,
-            "autoplay": false,
-            "autoplaySpeed": 5000,
-            "fade": true,
-            "speed": 500,
-            "prevArrow": {"buttonClass": "slick-prev", "iconClass": "fa fa-angle-left" },
-            "nextArrow": {"buttonClass": "slick-next", "iconClass": "fa fa-angle-right" }
-        }' data-slick-responsive='[
-            {"breakpoint":1501, "settings": {"slidesToShow": 1, "arrows": false} },
-            {"breakpoint":1199, "settings": {"slidesToShow": 1, "arrows": false} },
-            {"breakpoint":991, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
-            {"breakpoint":767, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
-            {"breakpoint":575, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
-            {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} }
-        ]'>
+                                                    "slidesToShow": 1,
+                                                    "slidesToScroll": 1,
+                                                    "arrows": false,
+                                                    "autoplay": false,
+                                                    "autoplaySpeed": 5000,
+                                                    "fade": true,
+                                                    "speed": 500,
+                                                    "prevArrow": {"buttonClass": "slick-prev", "iconClass": "fa fa-angle-left" },
+                                                    "nextArrow": {"buttonClass": "slick-next", "iconClass": "fa fa-angle-right" }
+                                                }' data-slick-responsive='[
+                                                    {"breakpoint":1501, "settings": {"slidesToShow": 1, "arrows": false} },
+                                                    {"breakpoint":1199, "settings": {"slidesToShow": 1, "arrows": false} },
+                                                    {"breakpoint":991, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":767, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":575, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":479, "settings": {"slidesToShow": 1, "arrows": false, "slidesToScroll": 1} }
+                                                ]'>
+
                                                 <div class="single-image">
                                                     <img src="~/ProductPictures/@Model.Product.Picture" class="img-fluid"
-                                                         alt="@Model.Product.PictureAlt">
+                                                         alt="@Model.Product.Picture">
                                                 </div>
-
                                                 @foreach (var picture in Model.Product.Pictures)
                                                 {
                                                     <div class="single-image">
@@ -79,39 +71,35 @@
                                                              alt="@picture.PictureAlt" title="@picture.PictureTitle">
                                                     </div>
                                                 }
-
-
-
                                             </div>
                                         </div>
 
 
                                         <div class="product-details-small-image-slider-wrapper product-details-small-image-slider-wrapper--horizontal-space ht-slick-slider"
                                              data-slick-setting='{
-        "slidesToShow": 4,
-        "slidesToScroll": 1,
-        "arrows": true,
-        "autoplay": false,
-        "autoplaySpeed": 5000,
-        "speed": 500,
-        "asNavFor": ".product-details-big-image-slider-wrapper",
-        "focusOnSelect": true,
-        "centerMode": false,
-        "prevArrow": {"buttonClass": "slick-prev", "iconClass": "fa fa-angle-left" },
-        "nextArrow": {"buttonClass": "slick-next", "iconClass": "fa fa-angle-right" }
-    }' data-slick-responsive='[
-        {"breakpoint":1501, "settings": {"slidesToShow": 3, "arrows": false} },
-        {"breakpoint":1199, "settings": {"slidesToShow": 3, "arrows": false} },
-        {"breakpoint":991, "settings": {"slidesToShow": 5, "arrows": false, "slidesToScroll": 1} },
-        {"breakpoint":767, "settings": {"slidesToShow": 3, "arrows": false, "slidesToScroll": 1} },
-        {"breakpoint":575, "settings": {"slidesToShow": 3, "arrows": false, "slidesToScroll": 1} },
-        {"breakpoint":479, "settings": {"slidesToShow": 2, "arrows": false, "slidesToScroll": 1} }
-    ]'>
+                                                    "slidesToShow": 4,
+                                                    "slidesToScroll": 1,
+                                                    "arrows": true,
+                                                    "autoplay": false,
+                                                    "autoplaySpeed": 5000,
+                                                    "speed": 500,
+                                                    "asNavFor": ".product-details-big-image-slider-wrapper",
+                                                    "focusOnSelect": true,
+                                                    "centerMode": false,
+                                                    "prevArrow": {"buttonClass": "slick-prev", "iconClass": "fa fa-angle-left" },
+                                                    "nextArrow": {"buttonClass": "slick-next", "iconClass": "fa fa-angle-right" }
+                                                }' data-slick-responsive='[
+                                                    {"breakpoint":1501, "settings": {"slidesToShow": 3, "arrows": false} },
+                                                    {"breakpoint":1199, "settings": {"slidesToShow": 3, "arrows": false} },
+                                                    {"breakpoint":991, "settings": {"slidesToShow": 5, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":767, "settings": {"slidesToShow": 3, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":575, "settings": {"slidesToShow": 3, "arrows": false, "slidesToScroll": 1} },
+                                                    {"breakpoint":479, "settings": {"slidesToShow": 2, "arrows": false, "slidesToScroll": 1} }
+                                                ]'>
                                             <div class="single-image">
                                                 <img src="~/ProductPictures/@Model.Product.Picture" class="img-fluid"
-                                                     alt="@Model.Product.PictureAlt">
+                                                     alt="@Model.Product.Picture">
                                             </div>
-
                                             @foreach (var picture in Model.Product.Pictures)
                                             {
                                                 <div class="single-image">
@@ -121,11 +109,8 @@
                                             }
                                         </div>
                                     </div>
-
-                                    <!--=======  End of product details slider area  =======-->
                                 </div>
                                 <div class="col-lg-6">
-                                    <!--=======  single product content description  =======-->
                                     <div class="single-product-content-description">
                                         <p class="single-info">
                                             <a asp-page="/ProductCategory" asp-route-id="@Model.Product.CategorySlug">@Model.Product.Category</a>
@@ -145,16 +130,15 @@
                                             </span>
                                         </div>
 
-                                        <p class="single-grid-product__price" style="direction : rtl">
-
+                                        <p class="single-grid-product__price" style="direction: rtl">
                                             @if (Model.Product.HasDiscount)
                                             {
-                                                <span class="discounted-price">@Model.Product.Price تومان</span>
-                                                <span class="main-price discounted">@Model.Product.PriceWithDiscount تومان</span>
+                                                <span class="main-price discounted">@Model.Product.Price تومان</span>
+                                                <span class="discounted-price">@Model.Product.PriceWithDiscount تومان</span>
                                             }
                                             else
                                             {
-                                                <span class="main-price">@Model.Product.Price</span>
+                                                <span class="main-price">@Model.Product.Price تومان</span>
                                             }
 
                                         </p>
@@ -169,7 +153,6 @@
                                             {
                                                 <span class="text-danger">محصول ناموجود</span>
                                             }
-
                                         </p>
 
                                         <p class="product-description">
@@ -183,20 +166,17 @@
                                         <div class="product-actions">
                                             <div class="quantity-selection">
                                                 <label>تعداد</label>
-                                                <input type="number" value="1" min="1">
+                                                <input type="number" value="1" min="1" id="productCount">
                                             </div>
-
                                             <div class="product-buttons">
-                                                <a class="cart-btn" href="#">
-                                                    <i class="ion-bag"></i>
-                                                    افزودن به سبد خرید
+                                                <a class="cart-btn" onclick="addToCart('@Model.Product.Id', '@Model.Product.Name', '@Model.Product.DoublePrice', '@Model.Product.Picture')">
+                                                    <i class="ion-bag"></i> افزودن به سبد خرید
                                                 </a>
                                             </div>
-
                                         </div>
 
                                         <div class="social-share-buttons mt-20">
-                                            <h5>این محصول را به اشتراک بگذارید.</h5>
+                                            <h5>این محصول را به اشتراک بگذارید</h5>
                                             <ul>
                                                 <li>
                                                     <a class="twitter" href="#">
@@ -223,21 +203,13 @@
                                         <p class="single-info mb-0">
                                             تگ ها: @Model.Product.Keywords
                                         </p>
-
-
                                     </div>
-                                    <!--=======  End of single product content description  =======-->
                                 </div>
                             </div>
                         </div>
-                        <!--=======  End of single product main content area  =======-->
-                        <!--=======  product description review   =======-->
-
                         <div class="product-description-review-area">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <!--=======  product description review container  =======-->
-
                                     <div class="tab-slider-wrapper product-description-review-container  section-space--inner">
                                         <nav>
                                             <div class="nav nav-tabs justify-content-center" id="nav-tab"
@@ -252,127 +224,110 @@
                                         <div class="tab-content" id="nav-tabContent">
                                             <div class="tab-pane fade show active" id="product-description"
                                                  role="tabpanel" aria-labelledby="description-tab">
-                                                <!--=======  product description  =======-->
-
                                                 <div class="product-description">
                                                     @Model.Product.Description
                                                 </div>
-
-                                                <!--=======  End of product description  =======-->
                                             </div>
                                             <div class="tab-pane fade" id="review" role="tabpanel"
                                                  aria-labelledby="review-tab">
-                                                <!--=======  review content  =======-->
-                                                @*<div class="product-rating-wrap">
-                                                    <div class="rating-list">
-                                                        <div class="sin-list float-right">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <span>(5)</span>
-                                                        </div>
-                                                        <div class="sin-list float-right">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <span>(3)</span>
-                                                        </div>
-                                                        <div class="sin-list float-right">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <span>(1)</span>
-                                                        </div>
-                                                        <div class="sin-list float-right">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <span>(0)</span>
-                                                        </div>
-                                                        <div class="sin-list float-right">
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <i class="fa fa-star-o"></i>
-                                                            <span>(0)</span>
-                                                        </div>
-                                                    </div>*@
-                                                @foreach (var comment in Model.Product.Comments)
-                                                {
-                                                    <div class="ratings-wrapper">
-
-                                                        <div class="sin-ratings">
-                                                            <div class="rating-author">
+                                                <div class="product-rating-wrap">
+                                                    @*<div class="rating-list">
+                                                            <div class="sin-list float-right">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <span>(5)</span>
+                                                            </div>
+                                                            <div class="sin-list float-right">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <span>(3)</span>
+                                                            </div>
+                                                            <div class="sin-list float-right">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <span>(1)</span>
+                                                            </div>
+                                                            <div class="sin-list float-right">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <span>(0)</span>
+                                                            </div>
+                                                            <div class="sin-list float-right">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <i class="fa fa-star-o"></i>
+                                                                <span>(0)</span>
+                                                            </div>
+                                                        </div>*@
+                                                    @foreach (var comment in Model.Product.Comments)
+                                                    {
+                                                        <div class="ratings-wrapper">
+                                                            <div class="sin-ratings">
+                                                                <div class="rating-author">
                                                                     <h3>@comment.Name</h3>
                                                                     @*<div class="rating-star">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <span>(5)</span>
-                                                                    </div>*@
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <i class="fa fa-star"></i>
+                                                                            <span>(5)</span>
+                                                                        </div>*@
                                                                 </div>
-                                                            <p>
-                                                            @comment.Message
-                                                            </p>
+                                                                <p>@comment.Message</p>
+                                                            </div>
                                                         </div>
+                                                    }
+
+                                                    <div class="rating-form-wrapper fix">
+                                                        <h3>نظر خود را به ما بگویید</h3>
+                                                        <form method="post">
+                                                            <div class="rating-form row">
+                                                                <div class="col-md-6 col-12 form-group">
+                                                                    <label for="name">نام:</label>
+                                                                    <input id="name" placeholder="مثال: علی علوی" name="name" type="text">
+                                                                </div>
+                                                                <div class="col-md-6 col-12 form-group">
+                                                                    <label for="email">ایمیل:</label>
+                                                                    <input id="email" placeholder="مثال: contact@atriya.com" name="email" type="text">
+                                                                </div>
+                                                                <div class="col-12 form-group">
+                                                                    <label for="your-review">نظر شما:</label>
+                                                                    <textarea name="message" id="message" placeholder="نظر خود را بنویسید ..."></textarea>
+                                                                </div>
+                                                                <input type="hidden" name="ownerRecordId" value="@Model.Product.Id" />
+                                                                @*<input type="hidden" name="type" value="@CommnetManagement.Infrastructure.EFCore.CommentType.Product" />*@
+                                                                <input type="hidden" name="productSlug" value="@Model.Product.Slug" />
+                                                                <div class="col-12">
+                                                                    <input value="ارسال" type="submit">
+                                                                </div>
+                                                            </div>
+                                                        </form>
                                                     </div>
-                                                }
-
-                                                <div class="rating-form-wrapper fix">
-                                                    <h3>نظر خودتان را به اشتراک بگذارید:</h3>
-                                                    <form method="post">
-                                                        <div class="rating-form row">
-
-                                                            <div class="col-md-6 col-12 form-group">
-                                                                <label for="name">نام:</label>
-                                                                <input id="name" placeholder="مثال:پدرام پورحکیم" name="Name" type="text">
-                                                            </div>
-                                                            <div class="col-md-6 col-12 form-group">
-                                                                <label for="email">ایمیل:</label>
-                                                                <input id="email" placeholder="مثال:Shemuel1226@gmail.com" name="Email" type="text">
-                                                            </div>
-                                                            <div class="col-12 form-group">
-                                                                <label for="your-review">نظر شما :</label>
-                                                                <textarea name="Message" id="message"
-                                                                          placeholder="نظر خودرا بنویسید..."></textarea>
-                                                            </div>
-                                                            <input type="hidden" name="OwnerRecordID" value="@Model.Product.Id" />
-                                                            <input type="hidden" name="ProductSlug" value="@Model.Product.Slug" />
-                                                            <div class="col-12">
-                                                                <input value="ارسال" type="submit">
-                                                            </div>
-                                                        </div>
-                                                    </form>
                                                 </div>
                                             </div>
-
-                                            <!--=======  End of review content  =======-->
                                         </div>
                                     </div>
                                 </div>
-
-                                <!--=======  End of product description review container  =======-->
                             </div>
                         </div>
                     </div>
-
-                    <!--=======  End of product description review   =======-->
-
                 </div>
             </div>
-            <!--=======  End of page wrapper  =======-->
         </div>
     </div>
-</div>
 </div>
