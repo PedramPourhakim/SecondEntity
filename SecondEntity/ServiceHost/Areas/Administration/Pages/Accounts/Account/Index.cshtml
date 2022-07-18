@@ -26,12 +26,12 @@
             <div class="panel-body">
                 <form class="form-inline" role="form" method="get">
                     <div class="form-group">
-                        <label class="sr-only" asp-for="SearchModel.Fullname"></label>
-                        <input class="form-control" asp-for="SearchModel.Fullname" placeholder="نام">
+                        <label class="sr-only" asp-for="SearchModel.FullName"></label>
+                        <input class="form-control" asp-for="SearchModel.FullName" placeholder="نام">
                     </div>
                     <div class="form-group">
-                        <label class="sr-only" asp-for="SearchModel.Username"></label>
-                        <input class="form-control" asp-for="SearchModel.Username" placeholder="نام کاربری">
+                        <label class="sr-only" asp-for="SearchModel.UserName"></label>
+                        <input class="form-control" asp-for="SearchModel.UserName" placeholder="نام کاربری">
                     </div>
                     <div class="form-group">
                         <label class="sr-only" asp-for="SearchModel.Mobile"></label>
@@ -81,8 +81,8 @@
                                         <td>
                                             <img src="~/ProductPictures/@item.ProfilePhoto" style="width: 70px; height: 70px" />
                                         </td>
-                                        <td>@item.Fullname</td>
-                                        <td>@item.Username</td>
+                                        <td>@item.FullName</td>
+                                        <td>@item.UserName</td>
                                         <td>@item.Mobile</td>
                                         <td>@item.Role</td>
                                         <td>@item.CreationDate</td>
