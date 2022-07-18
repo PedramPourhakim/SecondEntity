@@ -10,10 +10,12 @@ using CommentManagement.Infrastructure.EfCore.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ShopManagement.Application;
+using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Application.Contracts.ProductCategoryContracts;
 using ShopManagement.Application.Contracts.ProductContracts;
 using ShopManagement.Application.Contracts.ProductPictureContracts;
 using ShopManagement.Application.Contracts.SlideContracts;
+using ShopManagement.Domain.OrderAgg;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Domain.ProductPictureAgg;
@@ -49,6 +51,13 @@ namespace ShopManagement.Configuration
             services.AddScoped<ISlideApplication, SlideApplication>();
             services.AddScoped<ISlideRepository, SlideRepository>();
 
+            services.AddTransient<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddTransient<IOrderApplication, OrderApplication>();
+            services.AddScoped<IOrderApplication, OrderApplication>();
+
+            services.AddSingleton<ICartService, CartService>();
+
             services.AddTransient<ISlideQuery, SlideQuery>();
             services.AddScoped<ISlideQuery, SlideQuery>();
 
@@ -61,6 +70,7 @@ namespace ShopManagement.Configuration
             services.AddTransient<ICartCalculatorService, CartCalculateService>();
             services.AddScoped<ICartCalculatorService, CartCalculateService>();
 
+          
 
             services.AddDbContext<ShopContext>(x=>x.UseSqlServer(connectionstring));
         }

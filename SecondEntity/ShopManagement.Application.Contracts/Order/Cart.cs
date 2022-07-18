@@ -19,5 +19,6 @@ namespace ShopManagement.Application.Contracts.Order
             DiscountAmount = cartItem.DiscountAmount + DiscountAmount;
             PayAmount = PayAmount + cartItem.ItemPayAmount;
         }
+       
     }
 }
