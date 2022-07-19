@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Domain.OrderAgg;
+using ShopManagement.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,23 +16,41 @@ namespace ShopManagement.Application
         private readonly IOrderRepository orderRepository;
         private readonly IAuthHelper authHelper;
         private readonly IConfiguration configuration;
-        public OrderApplication(IOrderRepository orderRepository,IAuthHelper authHelper,IConfiguration configuration)
+        private readonly IShopInventoryAcl shopInventoryAcl;
+        public OrderApplication(IOrderRepository
+            orderRepository,IAuthHelper
+            authHelper,IConfiguration configuration
+            ,IShopInventoryAcl shopInventoryAcl)
         {
             this.orderRepository = orderRepository;
             this.authHelper = authHelper;
             this.configuration = configuration;
+            this.shopInventoryAcl = shopInventoryAcl;
         }
 
-        public void PaymentSucceeded(long OrderId,long refId)
+        public double GetAmountBy(long id)
+        {
+            return orderRepository.GetAmountBy(id);
+        }
+
+        public string PaymentSucceeded(long OrderId,
+            long refId)
         {
             var order = orderRepository.Get(OrderId);
             order.PaymentSucceeded(refId);
-            var symbol = configuration.GetValue<string>("Symbol");
-            var issueTrackingNo = CodeGenerator.Generate(symbol);
+            var symbol = configuration.GetValue<string>
+                ("Symbol");
+            var issueTrackingNo = CodeGenerator.Generate
+                (symbol);
             order.SetIssueTrackingNo(issueTrackingNo);
             //Reduce Order Items From Inventory
-
-            orderRepository.SaveChanges();
+            if (shopInventoryAcl.ReduceFromInventory
+                (order.Items))
+            {
+                orderRepository.SaveChanges();
+                return issueTrackingNo;
+            }
+            return "";
         }
 
         public long PlaceOrder(Cart cart)
@@ -39,6 +58,7 @@ namespace ShopManagement.Application
             var cuurentAccountId = authHelper.CurrentAccountId();
 
             var order = new Order(cuurentAccountId,
+                cart.PaymentMethod,
                 cart.TotalAmount,cart.DiscountAmount,
                 cart.PayAmount);
 
@@ -53,5 +73,7 @@ namespace ShopManagement.Application
             orderRepository.SaveChanges();
             return order.Id;
         }
+
+      
     }
 }

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace ShopManagement.Application.Contracts.Order
 {
-    public interface IOrderApplication
+    public class OrderSearchModel
     {
-        long PlaceOrder(Cart cart);
-        double GetAmountBy(long id);
-        string PaymentSucceeded(long OrderId,long refId);
+        public long AccountID { get; set; }
+        public bool IsCanceled { get; set; }
     }
 }

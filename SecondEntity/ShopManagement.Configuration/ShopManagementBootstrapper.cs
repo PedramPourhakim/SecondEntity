@@ -19,9 +19,11 @@ using ShopManagement.Domain.OrderAgg;
 using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Domain.ProductPictureAgg;
+using ShopManagement.Domain.Services;
 using ShopManagement.Domain.SliderAgg;
 using ShopManagement.Infrastructure.EfCore;
 using ShopManagement.Infrastructure.EfCore.Repository;
+using ShopManagement.Infrastructure.InventoryAcl;
 using System;
 
 namespace ShopManagement.Configuration
@@ -57,6 +59,9 @@ namespace ShopManagement.Configuration
             services.AddScoped<IOrderApplication, OrderApplication>();
 
             services.AddSingleton<ICartService, CartService>();
+
+            services.AddScoped<IShopInventoryAcl,ShopInventoryAcl>();
+            services.AddTransient<IShopInventoryAcl,ShopInventoryAcl>();
 
             services.AddTransient<ISlideQuery, SlideQuery>();
             services.AddScoped<ISlideQuery, SlideQuery>();

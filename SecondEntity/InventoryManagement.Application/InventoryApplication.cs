@@ -12,10 +12,12 @@ namespace InventoryManagement.Application
     public class InventoryApplication : IInventoryApplication
     {
         private readonly IInventoryRepository inventoryRepository;
-
-        public InventoryApplication(IInventoryRepository inventoryRepository)
+        private readonly IAuthHelper authHelper;
+        public InventoryApplication(IInventoryRepository 
+            inventoryRepository,IAuthHelper authHelper)
         {
             this.inventoryRepository = inventoryRepository;
+            this.authHelper = authHelper;
         }
 
         public OperationResult Create(CreateInventory command)
@@ -87,7 +89,7 @@ namespace InventoryManagement.Application
             if (inventory == null)
                 return operation.Failed(ApplicationMessages.RecordNotFound);
 
-            const long OperatorId = 1;
+            var OperatorId = authHelper.CurrentAccountId();
             inventory.Reduce(command.Count,
                 OperatorId, command.Description,0);
             inventoryRepository.SaveChanges();
@@ -101,7 +103,9 @@ namespace InventoryManagement.Application
             {
                 var inventory =
                     inventoryRepository.GetBy(item.ProductId);
-                const long OperatorId = 1;
+
+            var OperatorId = authHelper.CurrentAccountId();
+
                 inventory.Reduce(item.Count, OperatorId
                     , item.Description, item.OrderId);
             }
