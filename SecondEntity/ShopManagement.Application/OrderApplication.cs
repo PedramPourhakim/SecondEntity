@@ -28,9 +28,21 @@ namespace ShopManagement.Application
             this.shopInventoryAcl = shopInventoryAcl;
         }
 
+        public void Cancel(long id)
+        {
+            var order = orderRepository.Get(id);
+            order.Cancel();
+            orderRepository.SaveChanges();
+        }
+
         public double GetAmountBy(long id)
         {
             return orderRepository.GetAmountBy(id);
+        }
+
+        public List<OrderItemViewModel> GetItems(long orderId)
+        {
+            return orderRepository.GetItems(orderId);
         }
 
         public string PaymentSucceeded(long OrderId,
@@ -74,6 +86,9 @@ namespace ShopManagement.Application
             return order.Id;
         }
 
-      
+        public List<OrderViewModel> Search(OrderSearchModel searchModel)
+        {
+            return orderRepository.Search(searchModel);
+        }
     }
 }

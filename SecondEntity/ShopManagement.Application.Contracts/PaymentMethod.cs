@@ -27,7 +27,7 @@ namespace ShopManagement.Application.Contracts
                 new PaymentMethod(2,"پرداخت نقدی","در این مدل ابتدا سفارش ثبت شده و در زمان تحویل کالا پرداخت صورت خواهد گرفت.")
             };
         }
-        public PaymentMethod GetBy(int id)
+        public static  PaymentMethod GetBy(int id)
         {
             return GetList().FirstOrDefault(x => x.Id == id);
         }

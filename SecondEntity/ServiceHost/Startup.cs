@@ -8,6 +8,7 @@ using BlogManagement.Infrastructure.Configuration;
 using CommentManagement.Infrastructure.Bootstrapper;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
+using InventoryManagement.Presentation.Api;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -17,6 +18,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using ServiceHost.Controllers;
 using ShopManagement.Configuration;
 using System;
 using System.Collections.Generic;
@@ -45,7 +47,7 @@ namespace ServiceHost
             InventoryManagementBootstrapper.Configure(services, connectionstring);
             BlogManagementBootstrapper.Configure(services, connectionstring);
             CommentManagementBootstrapper.Configure(services, connectionstring);
-            AccountManagementBootstrapper.Configure(services,connectionstring);
+            AccountManagementBootstrapper.Configure(services, connectionstring);
             services.AddTransient<IFileUploader, FileUploader>();
             services.AddScoped<IFileUploader, FileUploader>();
 
@@ -103,23 +105,23 @@ namespace ServiceHost
                     .AllowAnyHeader()
                     .AllowAnyMethod()));
 
-            services.AddRazorPages();
-                //.AddMvcOptions(options => options.Filters.Add<SecurityPageFilter>())
-                //.AddRazorPagesOptions(options =>
-                //{
-                //    options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea");
-                //    options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
-                //    options.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discount");
-                //    options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
-                //})
-                //.AddApplicationPart(typeof(ProductController).Assembly)
-                //.AddApplicationPart(typeof(InventoryController).Assembly)
-                //.AddNewtonsoftJson();
-
-           
+            services.AddRazorPages()
+                .AddMvcOptions(options => options.Filters.Add<SecurityPageFilter>())
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea");
+                    options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
+                    options.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discount");
+                    options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
+                })
+                .AddApplicationPart(typeof(ProductController).Assembly)
+                .AddApplicationPart(typeof(InventoryController).Assembly)
+                .AddNewtonsoftJson();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
+
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -128,28 +130,29 @@ namespace ServiceHost
             }
             else
             {
-                app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseDeveloperExceptionPage();
+                //app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseAuthentication();
 
-            app.UseRouting();
+            app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
 
             app.UseCookiePolicy();
 
-
-
-            app.UseCors("MyPolicy");
+            app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("MyPolicy");
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapDefaultControllerRoute();
+                endpoints.MapControllers();
             });
         }
     }

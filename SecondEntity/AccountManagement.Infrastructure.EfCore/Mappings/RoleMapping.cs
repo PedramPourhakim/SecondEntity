@@ -1,7 +1,6 @@
 ﻿using AccountManagement.Domain.RoleAgg;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ShopManagement.Infrastructure.EfCore.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
