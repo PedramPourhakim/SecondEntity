@@ -21,6 +21,7 @@ using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Domain.Services;
 using ShopManagement.Domain.SliderAgg;
+using ShopManagement.Infrastructure.AccountAcl;
 using ShopManagement.Infrastructure.EfCore;
 using ShopManagement.Infrastructure.EfCore.Repository;
 using ShopManagement.Infrastructure.InventoryAcl;
@@ -75,7 +76,8 @@ namespace ShopManagement.Configuration
             services.AddTransient<ICartCalculatorService, CartCalculateService>();
             services.AddScoped<ICartCalculatorService, CartCalculateService>();
 
-          
+            services.AddScoped<IShopAccountAcl, ShopAccountAcl>();
+            services.AddTransient<IShopAccountAcl, ShopAccountAcl>();
 
             services.AddDbContext<ShopContext>(x=>x.UseSqlServer(connectionstring));
         }

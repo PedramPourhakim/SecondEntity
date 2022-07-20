@@ -1,4 +1,5 @@
 ﻿using _0_Framework.Application;
+using _0_Framework.Application.Sms;
 using Microsoft.Extensions.Configuration;
 using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Domain.OrderAgg;
@@ -17,15 +18,21 @@ namespace ShopManagement.Application
         private readonly IAuthHelper authHelper;
         private readonly IConfiguration configuration;
         private readonly IShopInventoryAcl shopInventoryAcl;
+        private readonly ISmsService smsService;
+        private readonly IShopAccountAcl shopAccountAcl;
         public OrderApplication(IOrderRepository
             orderRepository,IAuthHelper
             authHelper,IConfiguration configuration
-            ,IShopInventoryAcl shopInventoryAcl)
+            ,IShopInventoryAcl shopInventoryAcl,
+            ISmsService smsService,IShopAccountAcl 
+            shopAccountAcl)
         {
             this.orderRepository = orderRepository;
             this.authHelper = authHelper;
             this.configuration = configuration;
             this.shopInventoryAcl = shopInventoryAcl;
+            this.smsService = smsService;
+            this.shopAccountAcl = shopAccountAcl;
         }
 
         public void Cancel(long id)
@@ -60,8 +67,15 @@ namespace ShopManagement.Application
                 (order.Items))
             {
                 orderRepository.SaveChanges();
+
+                var (name,mobile) = shopAccountAcl.
+                    GetAccountBy(order.AccountId);
+                smsService.Send(mobile,
+                    $"{name} عزیز،سفارش شما با شماره پیگیری{issueTrackingNo} با موفقیت پرداخت شد و ارسال خواهد شد.");
                 return issueTrackingNo;
+
             }
+
             return "";
         }
 

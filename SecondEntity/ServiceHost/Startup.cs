@@ -1,4 +1,6 @@
 using _0_Framework.Application;
+using _0_Framework.Application.Email;
+using _0_Framework.Application.Sms;
 using _0_Framework.Application.ZarinPal;
 using _0_Framework.Infrastructure;
 using _01_Query.Contract;
@@ -65,10 +67,12 @@ namespace ServiceHost
             services.AddScoped<IFileUploader, FileUploader>();
             services.AddTransient<IAuthHelper, AuthHelper>();
             services.AddScoped<IAuthHelper, AuthHelper>();
-            //services.AddTransient<IZarinPalFactory, ZarinPalFactory>();
-            //services.AddScoped<IZarinPalFactory, ZarinPalFactory>();
-            //services.AddTransient<ISmsService, SmsService>();
-            //services.AddTransient<IEmailService, EmailService>();
+
+            services.AddTransient<ISmsService, SmsService>();
+            services.AddScoped<ISmsService, SmsService>();
+
+            services.AddTransient<IEmailService, EmailService>();
+            services.AddScoped<IEmailService, EmailService>();
 
             services.Configure<CookiePolicyOptions>(options =>
             {
