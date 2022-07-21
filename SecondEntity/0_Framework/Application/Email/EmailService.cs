@@ -25,7 +25,7 @@ namespace _0_Framework.Application.Email
 
             var client = new SmtpClient();
             client.Connect("185.88.152.251", 25, false);
-            client.Authenticate("shemuel1226@gmail.com", "@@@PourhakimPedramPedramEnemyOfLaziness26@@@");
+            client.Authenticate("pedrampourhakim1999@gmail.com", "EnemyOfLaziness");
             client.Send(message);
             client.Disconnect(true);
             client.Dispose();

@@ -23,7 +23,7 @@ namespace ServiceHost.Pages
 
         public void OnGet()
         {
-            emailService.SendEmail("سلام","سلام به پروژه ی نهایی دانشگاهی من خوش آمدید !","Shemuel1226@gmail.com");
+            //emailService.SendEmail("سلام","سلام به پروژه ی نهایی دانشگاهی من خوش آمدید !","Shemuel1226@gmail.com");
         }
     }
 }
