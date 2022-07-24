@@ -80,7 +80,7 @@
                                                             </div>
                                                         }
                                                         <a asp-page="/Product" asp-route-id="@product.Slug">
-                                                            <img src="@product.Picture" class="img-fluid"
+                                                            <img src="~/ProductPictures/@product.Picture" class="img-fluid"
                                                                  alt="@product.PictureAlt" title="@product.PictureTitle">
                                                         </a>
                                                     </div>
@@ -145,4 +145,4 @@
             </div>
         </div>
     </div>
-</div> 
+</div>

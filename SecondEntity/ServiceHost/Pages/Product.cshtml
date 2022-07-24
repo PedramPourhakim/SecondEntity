@@ -61,7 +61,7 @@
                                                 ]'>
 
                                                 <div class="single-image">
-                                                    <img src="~/ProductPictures/@Model.Product.Picture" class="img-fluid"
+                                                    <img src="~/ProductPictures/@Model.Product.Picture"img-fluid"
                                                          alt="@Model.Product.Picture">
                                                 </div>
                                                 @foreach (var picture in Model.Product.Pictures)
@@ -299,19 +299,19 @@
                                                             <div class="rating-form row">
                                                                 <div class="col-md-6 col-12 form-group">
                                                                     <label for="name">نام:</label>
-                                                                    <input id="name" placeholder="مثال: علی علوی" name="name" type="text">
+                                                                    <input id="name" placeholder="مثال: پدرام پورحکیم" name="Name" type="text">
                                                                 </div>
                                                                 <div class="col-md-6 col-12 form-group">
                                                                     <label for="email">ایمیل:</label>
-                                                                    <input id="email" placeholder="مثال: contact@atriya.com" name="email" type="text">
+                                                                    <input id="email" placeholder="مثال: shemuel1226@gmail.com" name="Email" type="text">
                                                                 </div>
                                                                 <div class="col-12 form-group">
                                                                     <label for="your-review">نظر شما:</label>
-                                                                    <textarea name="message" id="message" placeholder="نظر خود را بنویسید ..."></textarea>
+                                                                    <textarea name="Message" id="message" placeholder="نظر خود را بنویسید ..."></textarea>
                                                                 </div>
-                                                                <input type="hidden" name="ownerRecordId" value="@Model.Product.Id" />
+                                                                <input type="hidden" name="OwnerRecordId" value="@Model.Product.Id" />
                                                                 @*<input type="hidden" name="type" value="@CommnetManagement.Infrastructure.EFCore.CommentType.Product" />*@
-                                                                <input type="hidden" name="productSlug" value="@Model.Product.Slug" />
+                                                                <input type="hidden" name="ProductSlug" value="@Model.Product.Slug" />
                                                                 <div class="col-12">
                                                                     <input value="ارسال" type="submit">
                                                                 </div>
@@ -331,3 +331,4 @@
         </div>
     </div>
 </div>
+<script src="~/Theme/assets/js/custom.js"></script>

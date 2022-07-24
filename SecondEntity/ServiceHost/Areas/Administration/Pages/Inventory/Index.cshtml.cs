@@ -19,7 +19,8 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
         private readonly IProductApplication _productApplication;
         private readonly IInventoryApplication _inventoryApplication;
 
-        public IndexModel(IProductApplication productApplication, IInventoryApplication inventoryApplication)
+        public IndexModel(IProductApplication productApplication,
+            IInventoryApplication inventoryApplication)
         {
             _productApplication = productApplication;
             _inventoryApplication = inventoryApplication;

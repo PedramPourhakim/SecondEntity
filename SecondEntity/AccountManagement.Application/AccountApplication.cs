@@ -97,8 +97,8 @@ namespace AccountManagement.Application
             if (!result.Verified)
                 return operation.Failed(ApplicationMessages.WrongUserPass);
 
-            var permissions = roleRepository.Get(account.RoleId).
-                Permissions.Select(x => x.Code).ToList();
+            var permissions = roleRepository.Get(account.RoleId).Permissions.Select(x => x.Code).ToList();
+               
 
             var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.FullName
             , account.UserName, account.Mobile, permissions);

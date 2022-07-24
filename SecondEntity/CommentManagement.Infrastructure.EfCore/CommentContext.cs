@@ -12,7 +12,8 @@ namespace CommentManagement.Infrastructure.EfCore
     public class CommentContext :DbContext
     {
         public DbSet<Comment> Comments { get; set; }
-        public CommentContext(DbContextOptions<CommentContext> options):base(options)
+        public CommentContext(DbContextOptions<CommentContext> options):
+            base(options)
         {
 
         }

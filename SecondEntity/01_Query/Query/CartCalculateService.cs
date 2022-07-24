@@ -13,9 +13,12 @@ namespace _01_Query.Query
     {
         private readonly IAuthHelper authHelper;
         private readonly DiscountContext discountContext;
-        public CartCalculateService(DiscountContext discountContext)
+        public CartCalculateService(DiscountContext discountContext,
+            IAuthHelper authHelper)
         {
             this.discountContext = discountContext;
+            this.authHelper=authHelper;
+            
         }
         public Cart ComputeCart(List<CartItem> cartItems)
         {

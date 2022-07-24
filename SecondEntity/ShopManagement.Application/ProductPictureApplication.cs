@@ -13,9 +13,13 @@ namespace ShopManagement.Application
     public class ProductPictureApplication : IProductPictureApplication
     {
         private readonly IFileUploader fileUploader;
-        private readonly IProductPictureRepository productPictureRepository;
+        private readonly IProductPictureRepository 
+            productPictureRepository;
         private readonly IProductRepository productRepository;
-        public ProductPictureApplication(IProductPictureRepository productPictureRepository,IProductRepository productRepository,IFileUploader fileUploader)
+        public ProductPictureApplication
+            (IProductPictureRepository productPictureRepository,
+            IProductRepository productRepository,
+            IFileUploader fileUploader)
         {
             this.fileUploader = fileUploader;
             this.productRepository = productRepository;
@@ -28,7 +32,8 @@ namespace ShopManagement.Application
             //if (productPictureRepository.Exists(x => x.Picture == command.Picture && x.ProductId == command.ProductId))
             //    return operation.Failed(ApplicationMessages.DuplicatedRecord);
 
-            var product = productRepository.GetProductWithCategory(command.ProductId);
+            var product = productRepository.GetProductWithCategory
+                (command.ProductId);
 
             var path = $"{product.Category.Slug}/{product.Slug}";
             var picturePath=fileUploader.Upload(command.Picture,path);
@@ -43,13 +48,17 @@ namespace ShopManagement.Application
         public OperationResult Edit(EditProductPicture command)
         {
             var operation = new OperationResult();
-            var productPicture = productPictureRepository.GetWithProductAndCategory(command.Id);
+            var productPicture = productPictureRepository.
+                GetWithProductAndCategory(command.Id);
             if (productPicture == null)
-                return operation.Failed(ApplicationMessages.RecordNotFound);
+                return operation.Failed(ApplicationMessages
+                    .RecordNotFound);
             
 
-            var path = $"{productPicture.Product.Category.Slug}//{productPicture.Product.Slug}";
-            var picturePath = fileUploader.Upload(command.Picture, path);
+            var path = $"{productPicture.Product.Category.Slug}" +
+                $"//{productPicture.Product.Slug}";
+            var picturePath = fileUploader.Upload(command.Picture,
+                path);
             productPicture.Edit(command.ProductId, picturePath,
                 command.PictureAlt, command.PictureTitle);
             productPictureRepository.SaveChanges();
@@ -66,7 +75,8 @@ namespace ShopManagement.Application
             var operation = new OperationResult();
             var productPicture = productPictureRepository.Get(id);
             if (productPicture == null)
-                return operation.Failed(ApplicationMessages.RecordNotFound);
+                return operation.Failed(ApplicationMessages
+                    .RecordNotFound);
             productPicture.Remove();
             productPictureRepository.SaveChanges();
             return operation.Succeeded();
@@ -77,13 +87,15 @@ namespace ShopManagement.Application
             var operation = new OperationResult();
             var productPicture = productPictureRepository.Get(id);
             if (productPicture == null)
-                return operation.Failed(ApplicationMessages.RecordNotFound);
+                return operation.Failed(ApplicationMessages
+                    .RecordNotFound);
             productPicture.Restore();
             productPictureRepository.SaveChanges();
             return operation.Succeeded();
         }
 
-        public List<ProductPictureViewModel> Search(ProductPictureSearchModel searchModel)
+        public List<ProductPictureViewModel> Search
+            (ProductPictureSearchModel searchModel)
         {
             return productPictureRepository.Search(searchModel);
         }

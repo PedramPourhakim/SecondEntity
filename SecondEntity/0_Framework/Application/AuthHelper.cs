@@ -12,11 +12,11 @@ namespace _0_Framework.Application
 {
     public class AuthHelper : IAuthHelper
     {
-        private readonly IHttpContextAccessor _contextAccessor;
+        private readonly IHttpContextAccessor contextAccessor;
 
         public AuthHelper(IHttpContextAccessor contextAccessor)
         {
-            _contextAccessor = contextAccessor;
+            this.contextAccessor = contextAccessor;
         }
 
         public AuthViewModel CurrentAccountInfo()
@@ -25,7 +25,7 @@ namespace _0_Framework.Application
             if (!IsAuthenticated())
                 return result;
 
-            var claims = _contextAccessor.HttpContext.User.Claims.ToList();
+            var claims = contextAccessor.HttpContext.User.Claims.ToList();
             result.Id = long.Parse(claims.FirstOrDefault(x => x.Type == "AccountId").Value);
             result.Username = claims.FirstOrDefault(x => x.Type == "Username").Value;
             result.RoleId = long.Parse(claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value);
@@ -39,7 +39,7 @@ namespace _0_Framework.Application
             if (!IsAuthenticated())
                 return new List<int>();
 
-            var permissions = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "permissions")
+            var permissions = contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "permissions")
                 ?.Value;
             return JsonConvert.DeserializeObject<List<int>>(permissions);
         }
@@ -47,27 +47,27 @@ namespace _0_Framework.Application
         public long CurrentAccountId()
         {
             return IsAuthenticated()
-                ? long.Parse(_contextAccessor.HttpContext.User.Claims.First(x => x.Type == "AccountId")?.Value)
+                ? long.Parse(contextAccessor.HttpContext.User.Claims.First(x => x.Type == "AccountId")?.Value)
                 : 0;
         }
 
         public string CurrentAccountMobile()
         {
             return IsAuthenticated()
-                ? _contextAccessor.HttpContext.User.Claims.First(x => x.Type == "Mobile")?.Value
+                ? contextAccessor.HttpContext.User.Claims.First(x => x.Type == "Mobile")?.Value
                 : "";
         }
 
         public string CurrentAccountRole()
         {
             if (IsAuthenticated())
-                return _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value;
+                return contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role)?.Value;
             return null;
         }
 
         public bool IsAuthenticated()
         {
-            return _contextAccessor.HttpContext.User.Identity.IsAuthenticated;
+            return contextAccessor.HttpContext.User.Identity.IsAuthenticated;
             //var claims = _contextAccessor.HttpContext.User.Claims.ToList();
             ////if (claims.Count > 0)
             ////    return true;
@@ -95,14 +95,14 @@ namespace _0_Framework.Application
                 ExpiresUtc = DateTimeOffset.UtcNow.AddDays(1)
             };
 
-            _contextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+            contextAccessor.HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                 new ClaimsPrincipal(claimsIdentity),
                 authProperties);
         }
 
         public void SignOut()
         {
-            _contextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            contextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
     }
 }

@@ -16,8 +16,10 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductPictures
         public SelectList Products;
 
         private readonly IProductApplication _productApplication;
-        private readonly IProductPictureApplication _productPictureApplication;
-        public IndexModel(IProductApplication ProductApplication, IProductPictureApplication productPictureApplication)
+        private readonly IProductPictureApplication
+            _productPictureApplication;
+        public IndexModel(IProductApplication ProductApplication,
+            IProductPictureApplication productPictureApplication)
         {
             _productApplication = ProductApplication;
             _productPictureApplication = productPictureApplication;
@@ -26,7 +28,8 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductPictures
         public void OnGet(ProductPictureSearchModel searchModel)
         {
             Products = new SelectList(_productApplication.GetProducts(), "Id", "Name");
-            ProductPictures = _productPictureApplication.Search(searchModel);
+            ProductPictures = _productPictureApplication.
+                Search(searchModel);
         }
 
         public IActionResult OnGetCreate()

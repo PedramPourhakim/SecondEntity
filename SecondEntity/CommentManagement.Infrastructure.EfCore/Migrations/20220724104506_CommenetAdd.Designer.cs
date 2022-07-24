@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CommentManagement.Infrastructure.EfCore.Migrations
 {
     [DbContext(typeof(CommentContext))]
-    [Migration("20220713123028_NewCommentAdded")]
-    partial class NewCommentAdded
+    [Migration("20220724104506_CommenetAdd")]
+    partial class CommenetAdd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -59,7 +59,8 @@ namespace CommentManagement.Infrastructure.EfCore.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Website")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.HasKey("Id");
 

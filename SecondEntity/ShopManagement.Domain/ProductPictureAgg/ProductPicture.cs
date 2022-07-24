@@ -16,7 +16,8 @@ namespace ShopManagement.Domain.ProductPictureAgg
         public string PictureTitle { get; private set; }
         public bool IsRemoved { get; private set; }
         public Product Product { get;private set; }
-        public ProductPicture(long productId, string picture, string pictureAlt, string pictureTitle)
+        public ProductPicture(long productId, string picture, 
+            string pictureAlt, string pictureTitle)
         {
             ProductId = productId;
             Picture = picture;
@@ -24,7 +25,8 @@ namespace ShopManagement.Domain.ProductPictureAgg
             PictureTitle = pictureTitle;
             IsRemoved = false;
         }
-        public void Edit(long productId, string picture, string pictureAlt, string pictureTitle)
+        public void Edit(long productId, string picture, 
+            string pictureAlt, string pictureTitle)
         {
             ProductId = productId;
             if(!string.IsNullOrWhiteSpace(picture))

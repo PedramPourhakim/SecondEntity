@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 
 namespace CommentManagement.Infrastructure.EfCore.Repository
 {
-    public class CommentRepository : RepositoryBase<long, Comment>, ICommentRepository
+    public class CommentRepository : RepositoryBase<long, Comment>,
+        ICommentRepository
     {
         private readonly CommentContext CommentContext;
         public CommentRepository(CommentContext CommentContext) :base(CommentContext)
